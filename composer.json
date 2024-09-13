@@ -50,7 +50,11 @@
         "controller": "php artisan make:controller",
         "encrypt-key": "php artisan key:generate",
         "cache": "php artisan config:cache",
-        "clear:cache": "php artisan config:clear"
+        "clear:cache": "php artisan config:clear",
+        "seeder": "php artisan make:seeder",
+        "seed": "php artisan db:seed",
+        "make:migration": "php artisan make:migration",
+        "migrate": "php artisan migrate"
     },
     "extra": {
         "laravel": {
