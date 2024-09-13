@@ -5,7 +5,7 @@ namespace Core\Features\Group\Facades;
 use Core\Features\Group\InterfaceAdapters\GroupMapperInterface;
 use Core\Features\Group\InterfaceAdapters\GroupRepositoryInterface;
 use Core\Features\Group\Mappers\GroupMapper;
-use Frameworks\Features\Group\Repositories\GroupRepository;
+use Core\Features\Group\Repositories\GroupRepository;
 
 class Group
 {

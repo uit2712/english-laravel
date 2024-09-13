@@ -46,7 +46,11 @@
             "@php artisan key:generate --ansi",
             "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
             "@php artisan migrate --graceful --ansi"
-        ]
+        ],
+        "controller": "php artisan make:controller",
+        "encrypt-key": "php artisan key:generate",
+        "cache": "php artisan config:cache",
+        "clear:cache": "php artisan config:clear"
     },
     "extra": {
         "laravel": {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Frameworks\Features\Database\Repositories;
+namespace Framework\Features\Database\Repositories;
 
 use Core\Features\Database\InterfaceAdapters\DatabaseRepositoryInterface;
 use Core\Helpers\StringHelper;

@@ -3,7 +3,7 @@
 namespace Core\Features\Database\Facades;
 
 use Core\Features\Database\InterfaceAdapters\DatabaseRepositoryInterface;
-use Frameworks\Features\Database\Repositories\DatabaseRepository;
+use Framework\Features\Database\Repositories\DatabaseRepository;
 
 class Database
 {
