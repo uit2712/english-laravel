@@ -8,6 +8,6 @@ class GroupController extends Controller
 {
     public function index()
     {
-        return GroupApi::getAll();
+        return response()->json(GroupApi::getAll());
     }
 }

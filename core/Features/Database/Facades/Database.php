@@ -3,6 +3,7 @@
 namespace Core\Features\Database\Facades;
 
 use Core\Features\Database\InterfaceAdapters\DatabaseRepositoryInterface;
+use Exception;
 use Framework\Features\Database\Repositories\DatabaseRepository;
 
 class Database
@@ -26,7 +27,11 @@ class Database
      */
     public static function select($queryStr)
     {
-        return self::getRepo()->select($queryStr);
+        try {
+            return self::getRepo()->select($queryStr);
+        } catch (Exception $ex) {
+            return [];
+        }
     }
 
     /**
@@ -34,6 +39,10 @@ class Database
      */
     public static function selectOne($queryStr)
     {
-        return self::getRepo()->selectOne($queryStr);
+        try {
+            return self::getRepo()->selectOne($queryStr);
+        } catch (Exception $ex) {
+            return null;
+        }
     }
 }
