@@ -17,11 +17,11 @@ class GroupMapper implements GroupMapperInterface
         }
 
 
-        if (isset($data->id) && NumberHelper::isPositiveInteger($data->id)) {
+        if (isset($data->id) === false || NumberHelper::isPositiveInteger($data->id) === false) {
             return null;
         }
 
-        if (isset($data->name) && StringHelper::isHasValue($data->name)) {
+        if (isset($data->name) === false || StringHelper::isHasValue($data->name) === false) {
             return null;
         }
 

@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use Core\Features\Group\Constants\GroupConstants;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
