@@ -3,7 +3,6 @@ services:
         container_name: api
         build: api
         restart: always
-        # command: php artisan serve --host 0.0.0.0
         command: php -S 0.0.0.0:8000 -t public/
         ports:
             - 80:8000
@@ -42,6 +41,15 @@ services:
         command: redis-server
         ports:
             - 6379:6379
+        networks:
+            - laravel-network
+
+    redis-insight:
+        container_name: redis-insight
+        image: redislabs/redisinsight:latest
+        restart: always
+        ports:
+            - 5540:5540
         networks:
             - laravel-network
 

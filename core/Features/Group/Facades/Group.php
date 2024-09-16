@@ -2,9 +2,11 @@
 
 namespace Core\Features\Group\Facades;
 
+use Core\Features\Group\InterfaceAdapters\CachedGroupRepositoryInterface;
 use Core\Features\Group\InterfaceAdapters\GroupMapperInterface;
 use Core\Features\Group\InterfaceAdapters\GroupRepositoryInterface;
 use Core\Features\Group\Mappers\GroupMapper;
+use Core\Features\Group\Repositories\CachedGroupRepository;
 use Core\Features\Group\Repositories\GroupRepository;
 
 class Group
@@ -12,12 +14,17 @@ class Group
     /**
      * @var GroupMapperInterface|null
      */
-    public static $mapper;
+    private static $mapper;
 
     /**
      * @var GroupRepositoryInterface|null
      */
-    public static $repo;
+    private static $repo;
+
+    /**
+     * @var CachedGroupRepositoryInterface|null
+     */
+    private static $cachedRepo;
 
     public static function getMapper(): GroupMapperInterface
     {
@@ -35,5 +42,14 @@ class Group
         }
 
         return self::$repo;
+    }
+
+    public static function getCachedRepo(): CachedGroupRepositoryInterface
+    {
+        if (null == self::$cachedRepo) {
+            self::$cachedRepo = new CachedGroupRepository();
+        }
+
+        return self::$cachedRepo;
     }
 }

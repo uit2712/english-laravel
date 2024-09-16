@@ -16,7 +16,6 @@ class GroupMapper implements GroupMapperInterface
             return null;
         }
 
-
         if (isset($data->id) === false || NumberHelper::isPositiveInteger($data->id) === false) {
             return null;
         }
@@ -41,6 +40,44 @@ class GroupMapper implements GroupMapperInterface
 
         foreach ($data as $item) {
             $newItem = $this->mapFromDbToEntity($item);
+            if (null !== $newItem) {
+                $result[] = $newItem;
+            }
+        }
+
+        return $result;
+    }
+
+    public function mapFromCacheToEntity($data)
+    {
+        if (null === $data) {
+            return null;
+        }
+
+        if (isset($data->id) === false || NumberHelper::isPositiveInteger($data->id) === false) {
+            return null;
+        }
+
+        if (isset($data->name) === false || StringHelper::isHasValue($data->name) === false) {
+            return null;
+        }
+
+        $result = new GroupEntity();
+        $result->id = $data->id;
+        $result->name = $data->name;
+
+        return $result;
+    }
+
+    public function mapFromCacheToListEntities($data)
+    {
+        $result = [];
+        if (ArrayHelper::isHasItems($data) === false) {
+            return $result;
+        }
+
+        foreach ($data as $item) {
+            $newItem = $this->mapFromCacheToEntity($item);
             if (null !== $newItem) {
                 $result[] = $newItem;
             }

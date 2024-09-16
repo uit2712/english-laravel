@@ -8,6 +8,6 @@ class GetAllGroupsUseCase
 {
     public function invoke()
     {
-        return Group::getRepo()->getAll();
+        return Group::getCachedRepo()->getAll();
     }
 }

@@ -18,4 +18,16 @@ interface GroupMapperInterface
      * @return GroupEntity[]
      */
     public function mapFromDbToListEntities($data);
+    /**
+     * @param mixed $data Data.
+     *
+     * @return GroupEntity|null
+     */
+    public function mapFromCacheToEntity($data);
+    /**
+     * @param mixed $data Data.
+     *
+     * @return GroupEntity[]
+     */
+    public function mapFromCacheToListEntities($data);
 }

@@ -50,7 +50,7 @@ class GroupRepository implements GroupRepositoryInterface
         }
 
         $data = Database::selectOne("SELECT id, name FROM {$this->tableName} WHERE id=$id",);
-        $result->data = Group::getMapper()->mapFromDbToListEntities($data);
+        $result->data = Group::getMapper()->mapFromDbToEntity($data);
 
         $result->success = ArrayHelper::isHasItems($result->data);
         if ($result->success) {

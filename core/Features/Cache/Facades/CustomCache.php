@@ -2,14 +2,17 @@
 
 namespace Core\Features\Cache\Facades;
 
+use Core\Features\Cache\InterfaceAdapters\CustomCacheRepositoryInterface;
 use Framework\Features\Cache\Repositories\CustomCacheRepository;
-use Psr\SimpleCache\CacheInterface;
 
 class CustomCache
 {
+    /**
+     * @var CustomCacheRepositoryInterface|null
+     */
     private static $repo;
 
-    private static function getRepo(): CacheInterface
+    private static function getRepo(): CustomCacheRepositoryInterface
     {
         if (null === self::$repo) {
             self::$repo = new CustomCacheRepository();
@@ -148,5 +151,14 @@ class CustomCache
     public static function has(string $key): bool
     {
         return self::getRepo()->has($key);
+    }
+
+    /**
+     * @param array $keys Keys.
+     * @param mixed|null $default Default.
+     */
+    public static function getMultipleKeepKeys($keys, $default = null)
+    {
+        return self::getRepo()->getMultipleKeepKeys($keys, $default);
     }
 }

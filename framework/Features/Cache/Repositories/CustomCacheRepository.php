@@ -2,10 +2,11 @@
 
 namespace Framework\Features\Cache\Repositories;
 
+use Core\Features\Cache\InterfaceAdapters\CustomCacheRepositoryInterface;
+use Core\Helpers\ArrayHelper;
 use Illuminate\Support\Facades\Cache;
-use Psr\SimpleCache\CacheInterface;
 
-class CustomCacheRepository implements CacheInterface
+class CustomCacheRepository implements CustomCacheRepositoryInterface
 {
     public function get(string $key, mixed $default = null): mixed
     {
@@ -45,5 +46,25 @@ class CustomCacheRepository implements CacheInterface
     public function has(string $key): bool
     {
         return Cache::has($key);
+    }
+
+    public function getMultipleKeepKeys($keys, $default = null)
+    {
+        if (ArrayHelper::isHasItems($keys) === false) {
+            return array();
+        }
+
+        $values = Cache::getMultiple($keys, $default);
+
+        $result = array();
+        foreach ($values as $keyCache => $value) {
+            if (isset($value) === false || false === $value) {
+                $result[ $keyCache ] = $default;
+            } else {
+                $result[ $keyCache ] = $value;
+            }
+        }
+
+        return $result;
     }
 }
