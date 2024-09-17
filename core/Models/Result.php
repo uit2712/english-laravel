@@ -2,9 +2,20 @@
 
 namespace Core\Models;
 
+use OpenApi\Annotations as OA;
+
+/**
+ * @OA\Schema()
+ */
 class Result
 {
+    /**
+     * @OA\Property(type="boolean")
+     */
     public $success = false;
+    /**
+     * @OA\Property(type="string")
+     */
     public $message = '';
     public $data = null;
 
