@@ -12,10 +12,39 @@
                     "Groups"
                 ],
                 "summary": "Get groups",
-                "operationId": "bef7bc6436ad2524e81253beb2657bf9",
+                "operationId": "a6f517d1b63bd12b0a2362d868189f5e",
                 "responses": {
                     "200": {
-                        "description": "Create author info from EET by url success",
+                        "description": "Get list groups",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResult"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/groups/{id}": {
+            "get": {
+                "tags": [
+                    "Groups"
+                ],
+                "summary": "Get group by id",
+                "operationId": "f534366b4ba7b94fefc2e37bbcb0cb13",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get group by id",
                         "content": {
                             "application/json": {
                                 "schema": {

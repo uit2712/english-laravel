@@ -22,8 +22,36 @@ class GroupController extends Controller
      *      )
      * )
      */
-    public function index()
+    public function getAll()
     {
         return response()->json(GroupApi::getAll());
+    }
+
+    /**
+     * @OA\Get(
+     *      path="/groups/{id}",
+     *      summary="Get group by id",
+     *      tags={"Groups"},
+     *      @OA\Parameter(
+     *          in="path",
+     *          name="id",
+     *          description="Id",
+     *          required=true
+     *      ),
+     *      @OA\Response(
+     *          response="200",
+     *          description="Get group by id",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *              @OA\Schema(ref="#/components/schemas/ApiResult"),
+     *          )
+     *      ),
+     * )
+     *
+     * @param int|string|null $id Id
+     */
+    public function getById($id)
+    {
+        return response()->json(GroupApi::getById($id));
     }
 }

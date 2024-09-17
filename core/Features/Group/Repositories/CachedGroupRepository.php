@@ -107,14 +107,16 @@ class CachedGroupRepository implements CachedGroupRepositoryInterface
         $data = CustomCache::get($keyCache);
         if (null !== $data) {
             $result->success = true;
+            $result->message = sprintf('Get data from cache success');
             $result->data = Group::getMapper()->mapFromCacheToEntity($data);
             return $result;
         }
 
         $getDataResult = Group::getRepo()->get($id);
-        if (null !== $getDataResult) {
+        $result = $result->copyWithoutData($getDataResult);
+        if ($getDataResult->isHasObjectData()) {
             $result->success = true;
-            $result->data = $getDataResult;
+            $result->data = $getDataResult->data;
             $this->setCache($getDataResult->data);
         }
 

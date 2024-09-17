@@ -25,10 +25,31 @@ class Result
     public function copyWithoutData($source)
     {
         if (null == $source) {
-            return;
+            return $this;
         }
 
         $this->success = $source->success;
         $this->message = $source->message;
+        return $this;
+    }
+
+    public function isHasObjectData()
+    {
+        return $this->success && null !== $this->data;
+    }
+
+    public function isHasArrayData()
+    {
+        return $this->success && is_array($this->data);
+    }
+
+    public function isHasNumericData()
+    {
+        return $this->success && is_numeric($this->data);
+    }
+
+    public function isHasBoolData()
+    {
+        return $this->success && is_bool($this->data);
     }
 }
