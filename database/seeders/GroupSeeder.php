@@ -13,8 +13,9 @@ class GroupSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::statement('ALTER TABLE users AUTO_INCREMENT=1');
-        DB::table(GroupConstants::TABLE_NAME)->insert([
+        $tableName = GroupConstants::TABLE_NAME;
+        DB::statement("ALTER TABLE $tableName AUTO_INCREMENT=1");
+        DB::table($tableName)->insert([
             'id' => 1,
             'name' => 'Động vật',
         ]);
