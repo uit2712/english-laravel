@@ -24,7 +24,8 @@ class GroupController extends Controller
      */
     public function getAll()
     {
-        return response()->json(GroupApi::getAll());
+        $result = GroupApi::getAll();
+        return response()->json($result, $result->responseCode);
     }
 
     /**
@@ -52,6 +53,7 @@ class GroupController extends Controller
      */
     public function getById($id)
     {
-        return response()->json(GroupApi::getById($id));
+        $result = GroupApi::getById($id);
+        return response()->json($result, $result->responseCode);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Core\Models;
 
+use Core\Constants\HttpResponseCode;
 use OpenApi\Annotations as OA;
 
 /**
@@ -17,6 +18,10 @@ class Result
      * @OA\Property(type="string")
      */
     public $message = '';
+    /**
+     * @OA\Property(type="number")
+     */
+    public $responseCode = HttpResponseCode::OK;
     public $data = null;
 
     /**
@@ -30,6 +35,7 @@ class Result
 
         $this->success = $source->success;
         $this->message = $source->message;
+        $this->responseCode = $source->responseCode;
         return $this;
     }
 

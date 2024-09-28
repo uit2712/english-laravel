@@ -3,6 +3,7 @@
 namespace Core\Features\Group\Repositories;
 
 use Core\Constants\ErrorMessage;
+use Core\Constants\HttpResponseCode;
 use Core\Constants\SuccessMessage;
 use Core\Features\Database\Facades\Database;
 use Core\Features\Group\Constants\GroupConstants;
@@ -35,6 +36,7 @@ class GroupRepository implements GroupRepositoryInterface
             $result->message = sprintf(SuccessMessage::FOUND_LIST_ITEMS, $this->name);
         } else {
             $result->message = sprintf(ErrorMessage::NOT_FOUND_ITEM, $this->name);
+            $result->responseCode = HttpResponseCode::NOT_FOUND;
         }
 
         return $result;
@@ -57,6 +59,7 @@ class GroupRepository implements GroupRepositoryInterface
             $result->message = sprintf(SuccessMessage::FOUND_LIST_ITEMS, $this->name);
         } else {
             $result->message = sprintf(ErrorMessage::NOT_FOUND_ITEM, $this->name);
+            $result->responseCode = HttpResponseCode::NOT_FOUND;
         }
 
         return $result;
