@@ -45,4 +45,28 @@ class Database
             return null;
         }
     }
+
+    /**
+     * @param string $queryStr Query string.
+     */
+    public static function query($queryStr): mixed
+    {
+        try {
+            return self::getRepo()->query($queryStr);
+        } catch (Exception $ex) {
+            return null;
+        }
+    }
+
+    /**
+     * @param string $tableName Table name.
+     */
+    public static function truncate($tableName): mixed
+    {
+        try {
+            return self::getRepo()->truncate($tableName);
+        } catch (Exception $ex) {
+            return null;
+        }
+    }
 }

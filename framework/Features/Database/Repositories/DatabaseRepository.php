@@ -25,4 +25,22 @@ class DatabaseRepository implements DatabaseRepositoryInterface
 
         return DB::selectOne($queryStr);
     }
+
+    public function query($queryStr): mixed
+    {
+        if (StringHelper::isHasValue($queryStr) === false) {
+            return null;
+        }
+
+        return DB::query($queryStr);
+    }
+
+    public function truncate($tableName): mixed
+    {
+        if (StringHelper::isHasValue($tableName) === false) {
+            return null;
+        }
+
+        return DB::table($tableName)->truncate();
+    }
 }

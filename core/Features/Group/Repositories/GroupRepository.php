@@ -13,6 +13,7 @@ use Core\Features\Group\Models\GetGroupResult;
 use Core\Features\Group\Models\GetListGroupsResult;
 use Core\Helpers\ArrayHelper;
 use Core\Helpers\NumberHelper;
+use Core\Models\Result;
 
 class GroupRepository implements GroupRepositoryInterface
 {
@@ -54,13 +55,22 @@ class GroupRepository implements GroupRepositoryInterface
         $data = Database::selectOne("SELECT id, name FROM {$this->tableName} WHERE id=$id",);
         $result->data = Group::getMapper()->mapFromDbToEntity($data);
 
-        $result->success = ArrayHelper::isHasItems($result->data);
+        $result->success = null !== $result->data;
         if ($result->success) {
-            $result->message = sprintf(SuccessMessage::FOUND_LIST_ITEMS, $this->name);
+            $result->message = sprintf(SuccessMessage::FOUND_ITEM, $this->name);
         } else {
             $result->message = sprintf(ErrorMessage::NOT_FOUND_ITEM, $this->name);
             $result->responseCode = HttpResponseCode::NOT_FOUND;
+            $result->data = $data;
         }
+
+        return $result;
+    }
+
+    public function reset(): Result
+    {
+        $result = new Result();
+        Database::truncate($this->tableName);
 
         return $result;
     }

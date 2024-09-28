@@ -9,20 +9,20 @@ use Illuminate\Foundation\Testing\DatabaseTruncation;
 use Illuminate\Testing\Fluent\AssertableJson;
 use Tests\TestCase;
 
-class GetAllGroupsUseCaseTest extends TestCase
+class GetGroupByIdUseCaseTest extends TestCase
 {
     use DatabaseTruncation;
 
     public function testReturnsProperResponseStructure(): void
     {
-        $response = $this->get('/groups');
+        $response = $this->get('/groups/444');
 
         $response->assertJsonStructure(['success', 'message', 'data', 'responseCode']);
     }
 
     public function testReturnsNotFoundResponse(): void
     {
-        $response = $this->get('/groups');
+        $response = $this->get('/groups/444');
 
         $response->assertNotFound();
     }
@@ -31,12 +31,12 @@ class GetAllGroupsUseCaseTest extends TestCase
     {
         $this->seed(GroupSeeder::class);
 
-        $response = $this->get('/groups');
+        $response = $this->get('/groups/1');
 
         $response->assertOk()
             ->assertJson([
                 'success' => true,
-                'message' => sprintf(SuccessMessage::FOUND_LIST_ITEMS, 'Group'),
+                'message' => sprintf(SuccessMessage::FOUND_ITEM, 'Group'),
             ]);
 
         GroupApi::resetTable();
@@ -46,14 +46,12 @@ class GetAllGroupsUseCaseTest extends TestCase
     {
         $this->seed(GroupSeeder::class);
 
-        $response = $this->get('/groups');
+        $response = $this->get('/groups/1');
 
         $response->assertJsonStructure([
             'data' => [
-                '*' => [
-                    'id',
-                    'name',
-                ]
+                'id',
+                'name',
             ]
         ]);
 
@@ -61,9 +59,8 @@ class GetAllGroupsUseCaseTest extends TestCase
         $json
             ->has('data')
             ->whereAllType([
-                'data' => 'array',
-                'data.0.id' => 'integer',
-                'data.0.name' => 'string'
+                'data.id' => 'integer',
+                'data.name' => 'string'
             ])
             ->etc());
 
@@ -74,11 +71,9 @@ class GetAllGroupsUseCaseTest extends TestCase
     {
         $this->seed(GroupSeeder::class);
 
-        $response = $this->get('/groups');
+        $response = $this->get('/groups/1');
 
-        $response->assertJsonCount(1, 'data');
-
-        $response->assertJsonPath('data.0.name', 'Động vật');
+        $response->assertJsonPath('data.name', 'Động vật');
 
         GroupApi::resetTable();
     }
