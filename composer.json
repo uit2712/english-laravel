@@ -56,6 +56,7 @@
         "seeder": "php artisan make:seeder",
         "seed": "php artisan db:seed",
         "make:migration": "php artisan make:migration",
+        "rollback:migration": "php artisan migrate:rollback",
         "migrate": "php artisan migrate",
         "reset:migrate": "php artisan migrate:reset",
         "swagger": "php artisan vendor:publish --provider \"L5Swagger\\L5SwaggerServiceProvider\" && php artisan l5-swagger:generate",
