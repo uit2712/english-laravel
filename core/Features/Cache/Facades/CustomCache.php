@@ -161,4 +161,9 @@ class CustomCache
     {
         return self::getRepo()->getMultipleKeepKeys($keys, $default);
     }
+
+    public static function isConnected(): bool
+    {
+        return self::getRepo()->isConnected();
+    }
 }

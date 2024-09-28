@@ -11,4 +11,5 @@ interface CustomCacheRepositoryInterface extends CacheInterface
      * @param mixed|null $default Default.
      */
     public function getMultipleKeepKeys($keys, $default = null);
+    public function isConnected(): bool;
 }

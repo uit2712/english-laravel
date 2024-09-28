@@ -5,47 +5,48 @@ namespace Framework\Features\Cache\Repositories;
 use Core\Features\Cache\InterfaceAdapters\CustomCacheRepositoryInterface;
 use Core\Helpers\ArrayHelper;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Redis;
 
 class CustomCacheRepository implements CustomCacheRepositoryInterface
 {
     public function get(string $key, mixed $default = null): mixed
     {
-        return Cache::get($key, $default);
+        return Cache::store('redis')->get($key, $default);
     }
 
     public function set(string $key, mixed $value, null|int|\DateInterval $ttl = null): bool
     {
-        return Cache::set($key, $value, $ttl);
+        return Cache::store('redis')->set($key, $value, $ttl);
     }
 
     public function delete(string $key): bool
     {
-        return Cache::delete($key);
+        return Cache::store('redis')->delete($key);
     }
 
     public function clear(): bool
     {
-        return Cache::clear();
+        return Cache::store('redis')->clear();
     }
 
     public function getMultiple(iterable $keys, mixed $default = null): iterable
     {
-        return Cache::getMultiple($keys, $default);
+        return Cache::store('redis')->getMultiple($keys, $default);
     }
 
     public function setMultiple(iterable $values, null|int|\DateInterval $ttl = null): bool
     {
-        return Cache::setMultiple($values, $ttl);
+        return Cache::store('redis')->setMultiple($values, $ttl);
     }
 
     public function deleteMultiple(iterable $keys): bool
     {
-        return Cache::deleteMultiple($keys);
+        return Cache::store('redis')->deleteMultiple($keys);
     }
 
     public function has(string $key): bool
     {
-        return Cache::has($key);
+        return Cache::store('redis')->has($key);
     }
 
     public function getMultipleKeepKeys($keys, $default = null)
@@ -54,7 +55,7 @@ class CustomCacheRepository implements CustomCacheRepositoryInterface
             return array();
         }
 
-        $values = Cache::getMultiple($keys, $default);
+        $values = Cache::store('redis')->getMultiple($keys, $default);
 
         $result = array();
         foreach ($values as $keyCache => $value) {
@@ -66,5 +67,10 @@ class CustomCacheRepository implements CustomCacheRepositoryInterface
         }
 
         return $result;
+    }
+
+    public function isConnected(): bool
+    {
+        return Redis::client()->ping();
     }
 }
