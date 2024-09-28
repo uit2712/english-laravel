@@ -56,6 +56,35 @@
                 }
             }
         },
+        "/groups/{id}/topics": {
+            "get": {
+                "tags": [
+                    "Groups"
+                ],
+                "summary": "Get list topics by id",
+                "operationId": "b039a329d8e99f576a90ee317b6aa91d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get list topics by id",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResult"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/topics/{id}": {
             "get": {
                 "tags": [

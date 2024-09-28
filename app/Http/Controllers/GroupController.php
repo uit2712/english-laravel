@@ -56,4 +56,33 @@ class GroupController extends Controller
         $result = GroupApi::getById($id);
         return response()->json($result, $result->responseCode);
     }
+
+    /**
+     * @OA\Get(
+     *      path="/groups/{id}/topics",
+     *      summary="Get list topics by id",
+     *      tags={"Groups"},
+     *      @OA\Parameter(
+     *          in="path",
+     *          name="id",
+     *          description="Id",
+     *          required=true
+     *      ),
+     *      @OA\Response(
+     *          response="200",
+     *          description="Get list topics by id",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *              @OA\Schema(ref="#/components/schemas/ApiResult"),
+     *          )
+     *      ),
+     * )
+     *
+     * @param int|string|null $id Id
+     */
+    public function getListTopicsById($id)
+    {
+        $result = GroupApi::getListTopicsById($id);
+        return response()->json($result, $result->responseCode);
+    }
 }

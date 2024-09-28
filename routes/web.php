@@ -10,5 +10,6 @@ Route::get('/', function () {
 
 Route::get('/groups', [GroupController::class, 'getAll']);
 Route::get('/groups/{id}', [GroupController::class, 'getById']);
+Route::get('/groups/{id}/topics', [GroupController::class, 'getListTopicsById']);
 
 Route::get('/topics/{id}', [TopicController::class, 'getById']);
