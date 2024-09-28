@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Group;
 
+use Core\Constants\ErrorMessage;
 use Core\Constants\SuccessMessage;
 use Core\Features\Group\Facades\GroupApi;
 use Database\Seeders\GroupSeeder;
@@ -24,7 +25,12 @@ class GetGroupByIdUseCaseTest extends TestCase
     {
         $response = $this->get('/groups/444');
 
-        $response->assertNotFound();
+        $response->assertNotFound()
+            ->assertJson([
+                'success' => false,
+                'message' => sprintf(ErrorMessage::NOT_FOUND_ITEM, 'Group'),
+                'data' => null,
+            ]);
     }
 
     public function testReturnsOkResponse(): void
