@@ -58,6 +58,7 @@ class GetAllGroupsUseCaseTest extends TestCase
         $json
             ->has('data')
             ->whereAllType([
+                'data' => 'array',
                 'data.0.id' => 'integer',
                 'data.0.name' => 'string'
             ])
