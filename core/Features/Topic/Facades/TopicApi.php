@@ -2,9 +2,10 @@
 
 namespace Core\Features\Topic\Facades;
 
-use Core\Features\Topic\UseCases\GetAllTopicsUseCase;
+use Core\Features\Topic\UseCases\GetListTopicsByGroupIdUseCase;
 use Core\Features\Topic\UseCases\GetTopicByIdUseCase;
 use Core\Features\Topic\UseCases\ResetTableTopicUseCase;
+use Core\Features\Topic\ViewModels\GetListTopicsByGroupIdViewModel;
 use Core\Features\Topic\ViewModels\GetTopicByIdViewModel;
 
 class TopicApi
@@ -18,6 +19,11 @@ class TopicApi
      * @var ResetTableTopicUseCase|null
      */
     public static $resetTableTopicUseCase;
+
+    /**
+     * @var GetListTopicsByGroupIdUseCase|null
+     */
+    public static $getListTopicsByGroupIdUseCase;
 
     public static function getById($id)
     {
@@ -37,5 +43,19 @@ class TopicApi
         }
 
         return self::$resetTableTopicUseCase->invoke();
+    }
+
+    /**
+     * @param int $groupId Group id.
+     */
+    public static function getByGroupId($groupId)
+    {
+        $model = new GetListTopicsByGroupIdViewModel($groupId);
+
+        if (null == self::$getListTopicsByGroupIdUseCase) {
+            self::$getListTopicsByGroupIdUseCase = new GetListTopicsByGroupIdUseCase();
+        }
+
+        return self::$getListTopicsByGroupIdUseCase->invoke($model);
     }
 }

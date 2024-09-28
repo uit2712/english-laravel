@@ -25,24 +25,6 @@ class TopicRepository implements TopicRepositoryInterface
         $this->tableName = TopicConstants::TABLE_NAME;
     }
 
-    public function getAll(): GetListTopicsResult
-    {
-        $result = new GetListTopicsResult();
-
-        $data = Database::select("SELECT id, name FROM {$this->tableName}");
-        $result->data = Topic::getMapper()->mapFromDbToListEntities($data);
-
-        $result->success = ArrayHelper::isHasItems($result->data);
-        if ($result->success) {
-            $result->message = sprintf(SuccessMessage::FOUND_LIST_ITEMS, $this->name);
-        } else {
-            $result->message = sprintf(ErrorMessage::NOT_FOUND_ITEM, $this->name);
-            $result->responseCode = HttpResponseCode::NOT_FOUND;
-        }
-
-        return $result;
-    }
-
     public function get($id): GetTopicResult
     {
         $result = new GetTopicResult();
@@ -78,6 +60,21 @@ class TopicRepository implements TopicRepositoryInterface
     public function getByGroupId($groupId): GetListTopicsResult
     {
         $result = new GetListTopicsResult();
+        if (NumberHelper::isPositiveInteger($groupId) === false) {
+            $result->message = sprintf(ErrorMessage::INVALID_PARAMETER, 'groupId');
+            return $result;
+        }
+
+        $data = Database::select("SELECT id, name FROM {$this->tableName} WHERE group_id=$groupId");
+        $result->data = Topic::getMapper()->mapFromDbToListEntities($data);
+
+        $result->success = ArrayHelper::isHasItems($result->data);
+        if ($result->success) {
+            $result->message = sprintf(SuccessMessage::FOUND_LIST_ITEMS, $this->name);
+        } else {
+            $result->message = sprintf(ErrorMessage::NOT_FOUND_ITEM, $this->name);
+            $result->responseCode = HttpResponseCode::NOT_FOUND;
+        }
 
         return $result;
     }

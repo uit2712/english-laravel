@@ -8,7 +8,6 @@ use Core\Models\Result;
 
 interface TopicRepositoryInterface
 {
-    public function getAll(): GetListTopicsResult;
     /**
      * @param int $id Id.
      */

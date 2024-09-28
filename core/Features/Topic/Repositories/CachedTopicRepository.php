@@ -19,62 +19,6 @@ class CachedTopicRepository implements CachedTopicRepositoryInterface
     private const CACHE_GROUP = 'Topics';
     private const NAME = 'Topic';
 
-    public function getAll(): GetListTopicsResult
-    {
-        $result = new GetListTopicsResult();
-        $keyCache = $this->getAllKeyCache();
-        $listIds = CustomCache::get($keyCache);
-        if (ArrayHelper::isHasItems($listIds) === false) {
-            $getDataResult = Topic::getRepo()->getAll();
-            if (false === $getDataResult->success) {
-                return $getDataResult;
-            }
-
-            $listIds = array_map(
-                function ($item) {
-                    return $item->id;
-                },
-                $getDataResult->data,
-            );
-            CustomCache::set($keyCache, $listIds);
-            CustomCache::setMultiple($this->convertListToCacheInput($getDataResult->data));
-
-            return $getDataResult;
-        }
-
-        $listItemKeyCaches = array_map(
-            function ($id) {
-                return $this->getIdKeyCache($id);
-            },
-            $listIds,
-        );
-        $data = CustomCache::getMultipleKeepKeys($listItemKeyCaches);
-        foreach ($data as $keyCache => $item) {
-            if (null !== $item) {
-                $newItem = Topic::getMapper()->mapFromDbToEntity($item);
-                $result->data[] = $newItem;
-            } else {
-                $id = $this->retrieveIdFromKeyCache($keyCache);
-                $newItem = $this->get($id);
-                $result->data[] = $newItem->data;
-            }
-        }
-
-        $result->success = ArrayHelper::isHasItems($result->data);
-        if ($result->success) {
-            $result->message = sprintf(SuccessMessage::FOUND_LIST_ITEMS, self::NAME);
-        } else {
-            $result->message = sprintf(ErrorMessage::NOT_FOUND_ITEM, self::NAME);
-        }
-
-        return $result;
-    }
-
-    private function getAllKeyCache(): string
-    {
-        return implode(':', [self::CACHE_GROUP, 'ALL']);
-    }
-
     /**
      * @param TopicEntity[]|null $data Data.
      */
@@ -164,7 +108,64 @@ class CachedTopicRepository implements CachedTopicRepositoryInterface
     public function getByGroupId($groupId): GetListTopicsResult
     {
         $result = new GetListTopicsResult();
+        if (NumberHelper::isPositiveInteger($groupId) === false) {
+            $result->message = sprintf(ErrorMessage::INVALID_PARAMETER, 'groupId');
+            return $result;
+        }
+
+        $keyCache = $this->getByGroupIdKeyCache($groupId);
+        $listIds = CustomCache::get($keyCache);
+        if (ArrayHelper::isHasItems($listIds) === false) {
+            $getDataResult = Topic::getRepo()->getByGroupId($groupId);
+            if (false === $getDataResult->success) {
+                return $getDataResult;
+            }
+
+            $listIds = array_map(
+                function ($item) {
+                    return $item->id;
+                },
+                $getDataResult->data,
+            );
+            CustomCache::set($keyCache, $listIds);
+            CustomCache::setMultiple($this->convertListToCacheInput($getDataResult->data));
+
+            return $getDataResult;
+        }
+
+        $listItemKeyCaches = array_map(
+            function ($id) {
+                return $this->getIdKeyCache($id);
+            },
+            $listIds,
+        );
+        $data = CustomCache::getMultipleKeepKeys($listItemKeyCaches);
+        foreach ($data as $keyCache => $item) {
+            if (null !== $item) {
+                $newItem = Topic::getMapper()->mapFromDbToEntity($item);
+                $result->data[] = $newItem;
+            } else {
+                $id = $this->retrieveIdFromKeyCache($keyCache);
+                $newItem = $this->get($id);
+                $result->data[] = $newItem->data;
+            }
+        }
+
+        $result->success = ArrayHelper::isHasItems($result->data);
+        if ($result->success) {
+            $result->message = sprintf(SuccessMessage::FOUND_LIST_ITEMS, self::NAME);
+        } else {
+            $result->message = sprintf(ErrorMessage::NOT_FOUND_ITEM, self::NAME);
+        }
 
         return $result;
+    }
+
+    /**
+     * @param int|null $groupId Group id.
+     */
+    private function getByGroupIdKeyCache($groupId): string
+    {
+        return implode(':', [self::CACHE_GROUP, 'GROUP', $groupId]);
     }
 }

@@ -7,7 +7,6 @@ use Core\Features\Topic\Models\GetListTopicsResult;
 
 interface CachedTopicRepositoryInterface
 {
-    public function getAll(): GetListTopicsResult;
     /**
      * @param int $id Id.
      */
