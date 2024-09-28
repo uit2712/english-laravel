@@ -55,6 +55,35 @@
                     }
                 }
             }
+        },
+        "/topics/{id}": {
+            "get": {
+                "tags": [
+                    "Topics"
+                ],
+                "summary": "Get topic by id",
+                "operationId": "878892a7bad9c5ce48d34f34ed7202f0",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get topic by id",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResult"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -76,6 +105,10 @@
         {
             "name": "Groups",
             "description": "Groups"
+        },
+        {
+            "name": "Topics",
+            "description": "Topics"
         }
     ]
 }

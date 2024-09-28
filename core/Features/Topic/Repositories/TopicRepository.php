@@ -52,7 +52,7 @@ class TopicRepository implements TopicRepositoryInterface
             return $result;
         }
 
-        $data = Database::selectOne("SELECT id, name FROM {$this->tableName} WHERE id=$id",);
+        $data = Database::selectOne("SELECT id, name, group_id FROM {$this->tableName} WHERE id=$id",);
         $result->data = Topic::getMapper()->mapFromDbToEntity($data);
 
         $result->success = null !== $result->data;

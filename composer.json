@@ -60,7 +60,7 @@
         "migrate": "php artisan migrate",
         "reset:migrate": "php artisan migrate:reset",
         "swagger": "php artisan vendor:publish --provider \"L5Swagger\\L5SwaggerServiceProvider\" && php artisan l5-swagger:generate",
-        "test": "php artisan test",
+        "test": "php artisan test --parallel",
         "test:coverage": "php artisan test --parallel --coverage",
         "create:feature-test": "php artisan make:test",
         "create:unit-test": "php artisan make:test --unit"

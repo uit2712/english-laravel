@@ -61,7 +61,6 @@ class GroupRepository implements GroupRepositoryInterface
         } else {
             $result->message = sprintf(ErrorMessage::NOT_FOUND_ITEM, $this->name);
             $result->responseCode = HttpResponseCode::NOT_FOUND;
-            $result->data = $data;
         }
 
         return $result;

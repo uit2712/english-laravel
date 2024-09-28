@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Core\Features\Group\Facades\GroupApi;
-use Illuminate\Support\Facades\DB;
 use OpenApi\Annotations as OA;
 
 class GroupController extends Controller

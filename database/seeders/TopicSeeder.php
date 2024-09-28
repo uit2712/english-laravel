@@ -14,6 +14,7 @@ class TopicSeeder extends Seeder
     public function run(): void
     {
         $tableName = TopicConstants::TABLE_NAME;
+
         DB::statement("ALTER TABLE $tableName AUTO_INCREMENT=1");
         DB::table($tableName)->insert([
             [
