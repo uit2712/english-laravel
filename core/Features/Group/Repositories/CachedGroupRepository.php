@@ -9,6 +9,7 @@ use Core\Features\Group\Entities\GroupEntity;
 use Core\Features\Group\Facades\Group;
 use Core\Features\Group\InterfaceAdapters\CachedGroupRepositoryInterface;
 use Core\Features\Group\Models\GetGroupResult;
+use Core\Features\Group\Models\GetListGroupsResult;
 use Core\Helpers\ArrayHelper;
 use Core\Helpers\NumberHelper;
 use Core\Helpers\StringHelper;
@@ -17,6 +18,13 @@ class CachedGroupRepository implements CachedGroupRepositoryInterface
 {
     private const CACHE_GROUP = 'Groups';
     private const NAME = 'Group';
+
+    public function getMultiple($pageIndex, $perPage): GetListGroupsResult
+    {
+        $result = new GetListGroupsResult();
+
+        return $result;
+    }
 
     /**
      * @param GroupEntity[]|null $data Data.

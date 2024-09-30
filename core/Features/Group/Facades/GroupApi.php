@@ -25,6 +25,11 @@ class GroupApi
      */
     public static $getListTopicsByGroupIdUseCase;
 
+    /**
+     * @var GetMultipleGroupsUseCase|null
+     */
+    public static $getMultipleGroupsUseCase;
+
     public static function getById($id)
     {
         $model = new GetGroupByIdViewModel($id);
@@ -57,5 +62,20 @@ class GroupApi
         }
 
         return self::$getListTopicsByGroupIdUseCase->invoke($model);
+    }
+
+    /**
+     * @param string|int|null $pageIndex Page index.
+     * @param string|int|null $perPage Per page.
+     */
+    public static function getMultiple($pageIndex, $perPage)
+    {
+        $model = new GetListTopicsByGroupIdViewModel($pageIndex, $perPage);
+
+        if (null == self::$getMultipleGroupsUseCase) {
+            self::$getMultipleGroupsUseCase = new GetListTopicsByGroupIdUseCase();
+        }
+
+        return self::$getMultipleGroupsUseCase->invoke($model);
     }
 }
