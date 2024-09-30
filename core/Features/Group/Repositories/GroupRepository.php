@@ -25,11 +25,22 @@ class GroupRepository implements GroupRepositoryInterface
         $this->tableName = GroupConstants::TABLE_NAME;
     }
 
-    public function getAll(): GetListGroupsResult
+    public function getMultiple($pageIndex, $perPage): GetListGroupsResult
     {
         $result = new GetListGroupsResult();
+        if (NumberHelper::isPositiveIntegerIncludeZero($pageIndex) === false) {
+            $result->message = sprintf(ErrorMessage::INVALID_PARAMETER . ': pageIndex >= 0', 'pageIndex');
+            return $result;
+        }
 
-        $data = Database::select("SELECT id, name FROM {$this->tableName}");
+        if (NumberHelper::isPositiveInteger($perPage) === false) {
+            $result->message = sprintf(ErrorMessage::INVALID_PARAMETER . ': perPage > 0', 'perPage');
+            return $result;
+        }
+
+        $offset = $pageIndex * $perPage;
+
+        $data = Database::select("SELECT id, name FROM {$this->tableName} LIMIT $perPage OFFSET $offset");
         $result->data = Group::getMapper()->mapFromDbToListEntities($data);
 
         $result->success = ArrayHelper::isHasItems($result->data);
