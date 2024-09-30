@@ -27,6 +27,7 @@ class Result
      * @OA\Property(type="boolean")
      */
     public $isFromCache = false;
+    public $debuggedData = null;
 
     /**
      * @param Result $source Source.

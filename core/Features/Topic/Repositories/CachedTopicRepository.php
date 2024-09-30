@@ -16,7 +16,7 @@ use Core\Helpers\StringHelper;
 
 class CachedTopicRepository implements CachedTopicRepositoryInterface
 {
-    private const CACHE_GROUP = 'Topics';
+    private const CACHE_GROUP = 'TOPIC';
     private const NAME = 'Topic';
 
     /**
@@ -143,14 +143,14 @@ class CachedTopicRepository implements CachedTopicRepositoryInterface
         $data = CustomCache::getMultipleKeepKeys($listItemKeyCaches);
         foreach ($data as $keyCache => $item) {
             if (null !== $item) {
-                $newItem = Topic::getMapper()->mapFromDbToEntity($item);
-                $result->data[] = $newItem;
+                $newItem = Topic::getMapper()->mapFromCacheToEntity($item);
             } else {
                 $id = $this->retrieveIdFromKeyCache($keyCache);
                 $newItem = $this->get($id)->data;
-                if (null !== $newItem) {
-                    $result->data[] = $newItem;
-                }
+            }
+
+            if (null !== $newItem) {
+                $result->data[] = $newItem;
             }
         }
 

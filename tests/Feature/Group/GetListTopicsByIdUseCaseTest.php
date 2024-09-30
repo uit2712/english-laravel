@@ -68,52 +68,52 @@ class GetListTopicsByIdUseCaseTest extends TestCase
         GroupApi::resetTable();
     }
 
-    // public function testReturnsProperDataStructure(): void
-    // {
-    //     $this->seed(GroupSeeder::class);
-    //     $this->seed(TopicSeeder::class);
+    public function testReturnsProperDataStructure(): void
+    {
+        $this->seed(GroupSeeder::class);
+        $this->seed(TopicSeeder::class);
 
-    //     $response = $this->get('/groups/1/topics');
+        $response = $this->get('/groups/1/topics');
 
-    //     $response->assertJsonStructure([
-    //         'data' => [
-    //             '*' => [
-    //                 'id',
-    //                 'name',
-    //                 'groupId',
-    //             ]
-    //         ]
-    //     ]);
+        $response->assertJsonStructure([
+            'data' => [
+                '*' => [
+                    'id',
+                    'name',
+                    'groupId',
+                ]
+            ]
+        ]);
 
-    //     $response->assertJson(fn (AssertableJson $json) =>
-    //     $json
-    //         ->has('data')
-    //         ->whereAllType([
-    //             'data' => 'array',
-    //             'data.0.id' => 'integer',
-    //             'data.0.name' => 'string',
-    //             'data.0.groupId' => 'integer',
-    //         ])
-    //         ->etc());
+        $response->assertJson(fn (AssertableJson $json) =>
+        $json
+            ->has('data')
+            ->whereAllType([
+                'data' => 'array',
+                'data.0.id' => 'integer',
+                'data.0.name' => 'string',
+                'data.0.groupId' => 'integer',
+            ])
+            ->etc());
 
-    //     TopicApi::resetTable();
-    //     GroupApi::resetTable();
-    // }
+        TopicApi::resetTable();
+        GroupApi::resetTable();
+    }
 
-    // public function testReturnsProperDataValue(): void
-    // {
-    //     $this->seed(GroupSeeder::class);
-    //     $this->seed(TopicSeeder::class);
+    public function testReturnsProperDataValue(): void
+    {
+        $this->seed(GroupSeeder::class);
+        $this->seed(TopicSeeder::class);
 
-    //     $response = $this->get('/groups/1/topics');
+        $response = $this->get('/groups/1/topics');
 
-    //     $response->assertJsonCount(8, 'data');
+        $response->assertJsonCount(8, 'data');
 
-    //     $response->assertJsonPath('data.0.id', 1);
-    //     $response->assertJsonPath('data.0.name', 'Thú cưng');
-    //     $response->assertJsonPath('data.0.groupId', 1);
+        $response->assertJsonPath('data.0.id', 1);
+        $response->assertJsonPath('data.0.name', 'Thú cưng');
+        $response->assertJsonPath('data.0.groupId', 1);
 
-    //     TopicApi::resetTable();
-    //     GroupApi::resetTable();
-    // }
+        TopicApi::resetTable();
+        GroupApi::resetTable();
+    }
 }
