@@ -7,7 +7,6 @@ use Core\Features\Group\Models\GetListGroupsResult;
 
 interface CachedGroupRepositoryInterface
 {
-    public function getAll(): GetListGroupsResult;
     /**
      * @param int $id Id.
      */

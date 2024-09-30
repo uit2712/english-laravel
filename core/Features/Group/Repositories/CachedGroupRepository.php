@@ -9,7 +9,6 @@ use Core\Features\Group\Entities\GroupEntity;
 use Core\Features\Group\Facades\Group;
 use Core\Features\Group\InterfaceAdapters\CachedGroupRepositoryInterface;
 use Core\Features\Group\Models\GetGroupResult;
-use Core\Features\Group\Models\GetListGroupsResult;
 use Core\Helpers\ArrayHelper;
 use Core\Helpers\NumberHelper;
 use Core\Helpers\StringHelper;
@@ -18,62 +17,6 @@ class CachedGroupRepository implements CachedGroupRepositoryInterface
 {
     private const CACHE_GROUP = 'Groups';
     private const NAME = 'Group';
-
-    public function getAll(): GetListGroupsResult
-    {
-        $result = new GetListGroupsResult();
-        $keyCache = $this->getAllKeyCache();
-        $listIds = CustomCache::get($keyCache);
-        if (ArrayHelper::isHasItems($listIds) === false) {
-            $getDataResult = Group::getRepo()->getAll();
-            if (false === $getDataResult->success) {
-                return $getDataResult;
-            }
-
-            $listIds = array_map(
-                function ($item) {
-                    return $item->id;
-                },
-                $getDataResult->data,
-            );
-            CustomCache::set($keyCache, $listIds);
-            CustomCache::setMultiple($this->convertListToCacheInput($getDataResult->data));
-
-            return $getDataResult;
-        }
-
-        $listItemKeyCaches = array_map(
-            function ($id) {
-                return $this->getIdKeyCache($id);
-            },
-            $listIds,
-        );
-        $data = CustomCache::getMultipleKeepKeys($listItemKeyCaches);
-        foreach ($data as $keyCache => $item) {
-            if (null !== $item) {
-                $newItem = Group::getMapper()->mapFromDbToEntity($item);
-                $result->data[] = $newItem;
-            } else {
-                $id = $this->retrieveIdFromKeyCache($keyCache);
-                $newItem = $this->get($id);
-                $result->data[] = $newItem->data;
-            }
-        }
-
-        $result->success = ArrayHelper::isHasItems($result->data);
-        if ($result->success) {
-            $result->message = sprintf(SuccessMessage::FOUND_LIST_ITEMS, self::NAME);
-        } else {
-            $result->message = sprintf(ErrorMessage::NOT_FOUND_ITEM, self::NAME);
-        }
-
-        return $result;
-    }
-
-    private function getAllKeyCache(): string
-    {
-        return implode(':', [self::CACHE_GROUP, 'ALL']);
-    }
 
     /**
      * @param GroupEntity[]|null $data Data.
@@ -107,8 +50,9 @@ class CachedGroupRepository implements CachedGroupRepositoryInterface
         $data = CustomCache::get($keyCache);
         if (null !== $data) {
             $result->success = true;
-            $result->message = sprintf('Get data from cache success');
+            $result->message = sprintf(SuccessMessage::FOUND_ITEM, self::NAME);
             $result->data = Group::getMapper()->mapFromCacheToEntity($data);
+            $result->isFromCache = true;
             return $result;
         }
 

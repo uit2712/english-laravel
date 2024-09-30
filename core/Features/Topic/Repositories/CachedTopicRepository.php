@@ -51,8 +51,9 @@ class CachedTopicRepository implements CachedTopicRepositoryInterface
         $data = CustomCache::get($keyCache);
         if (null !== $data) {
             $result->success = true;
-            $result->message = sprintf('Get data from cache success');
+            $result->message = sprintf(SuccessMessage::FOUND_ITEM, 'Topic');
             $result->data = Topic::getMapper()->mapFromCacheToEntity($data);
+            $result->isFromCache = true;
             return $result;
         }
 
@@ -146,8 +147,10 @@ class CachedTopicRepository implements CachedTopicRepositoryInterface
                 $result->data[] = $newItem;
             } else {
                 $id = $this->retrieveIdFromKeyCache($keyCache);
-                $newItem = $this->get($id);
-                $result->data[] = $newItem->data;
+                $newItem = $this->get($id)->data;
+                if (null !== $newItem) {
+                    $result->data[] = $newItem;
+                }
             }
         }
 

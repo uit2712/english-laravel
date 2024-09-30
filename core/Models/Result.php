@@ -23,6 +23,10 @@ class Result
      */
     public $responseCode = HttpResponseCode::OK;
     public $data = null;
+    /**
+     * @OA\Property(type="boolean")
+     */
+    public $isFromCache = false;
 
     /**
      * @param Result $source Source.
@@ -36,6 +40,7 @@ class Result
         $this->success = $source->success;
         $this->message = $source->message;
         $this->responseCode = $source->responseCode;
+        $this->isFromCache = $source->isFromCache;
         return $this;
     }
 

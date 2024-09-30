@@ -9,44 +9,46 @@ use Illuminate\Support\Facades\Redis;
 
 class CustomCacheRepository implements CustomCacheRepositoryInterface
 {
+    private $store = 'redis';
+
     public function get(string $key, mixed $default = null): mixed
     {
-        return Cache::store('redis')->get($key, $default);
+        return Cache::store($this->store)->get($key, $default);
     }
 
     public function set(string $key, mixed $value, null|int|\DateInterval $ttl = null): bool
     {
-        return Cache::store('redis')->set($key, $value, $ttl);
+        return Cache::store($this->store)->set($key, $value, $ttl);
     }
 
     public function delete(string $key): bool
     {
-        return Cache::store('redis')->delete($key);
+        return Cache::store($this->store)->delete($key);
     }
 
     public function clear(): bool
     {
-        return Cache::store('redis')->clear();
+        return Cache::store($this->store)->clear();
     }
 
     public function getMultiple(iterable $keys, mixed $default = null): iterable
     {
-        return Cache::store('redis')->getMultiple($keys, $default);
+        return Cache::store($this->store)->getMultiple($keys, $default);
     }
 
     public function setMultiple(iterable $values, null|int|\DateInterval $ttl = null): bool
     {
-        return Cache::store('redis')->setMultiple($values, $ttl);
+        return Cache::store($this->store)->setMultiple($values, $ttl);
     }
 
     public function deleteMultiple(iterable $keys): bool
     {
-        return Cache::store('redis')->deleteMultiple($keys);
+        return Cache::store($this->store)->deleteMultiple($keys);
     }
 
     public function has(string $key): bool
     {
-        return Cache::store('redis')->has($key);
+        return Cache::store($this->store)->has($key);
     }
 
     public function getMultipleKeepKeys($keys, $default = null)
@@ -55,7 +57,7 @@ class CustomCacheRepository implements CustomCacheRepositoryInterface
             return array();
         }
 
-        $values = Cache::store('redis')->getMultiple($keys, $default);
+        $values = Cache::store($this->store)->getMultiple($keys, $default);
 
         $result = array();
         foreach ($values as $keyCache => $value) {

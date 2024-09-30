@@ -16,8 +16,14 @@ class GroupSeeder extends Seeder
         $tableName = GroupConstants::TABLE_NAME;
         DB::statement("ALTER TABLE $tableName AUTO_INCREMENT=1");
         DB::table($tableName)->insert([
-            'id' => 1,
-            'name' => 'Động vật',
+            [
+                'id' => 1,
+                'name' => 'Động vật',
+            ],
+            [
+                'id' => 2,
+                'name' => 'Nghề nghiệp',
+            ],
         ]);
     }
 }

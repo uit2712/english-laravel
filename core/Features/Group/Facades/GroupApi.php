@@ -2,7 +2,6 @@
 
 namespace Core\Features\Group\Facades;
 
-use Core\Features\Group\UseCases\GetAllGroupsUseCase;
 use Core\Features\Group\UseCases\GetGroupByIdUseCase;
 use Core\Features\Group\UseCases\GetListTopicsByGroupIdUseCase;
 use Core\Features\Group\UseCases\ResetTableGroupUseCase;
@@ -11,11 +10,6 @@ use Core\Features\Group\ViewModels\GetListTopicsByGroupIdViewModel;
 
 class GroupApi
 {
-    /**
-     * @var GetAllGroupsUseCase|null
-     */
-    private static $getAllGroupsUseCase;
-
     /**
      * @var GetGroupByIdUseCase|null
      */
@@ -30,15 +24,6 @@ class GroupApi
      * @var GetListTopicsByGroupIdUseCase|null
      */
     public static $getListTopicsByGroupIdUseCase;
-
-    public static function getAll()
-    {
-        if (null == self::$getAllGroupsUseCase) {
-            self::$getAllGroupsUseCase = new GetAllGroupsUseCase();
-        }
-
-        return self::$getAllGroupsUseCase->invoke();
-    }
 
     public static function getById($id)
     {

@@ -19,6 +19,14 @@ class GroupController extends Controller
      *              mediaType="application/json",
      *              @OA\Schema(ref="#/components/schemas/ApiResult"),
      *          )
+     *      ),
+     *      @OA\Response(
+     *          response="404",
+     *          description="Not found any group(s)",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *              @OA\Schema(ref="#/components/schemas/ApiResult"),
+     *          )
      *      )
      * )
      */
@@ -42,6 +50,14 @@ class GroupController extends Controller
      *      @OA\Response(
      *          response="200",
      *          description="Get group by id",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *              @OA\Schema(ref="#/components/schemas/ApiResult"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response="404",
+     *          description="Not found any group",
      *          @OA\MediaType(
      *              mediaType="application/json",
      *              @OA\Schema(ref="#/components/schemas/ApiResult"),
@@ -71,6 +87,14 @@ class GroupController extends Controller
      *      @OA\Response(
      *          response="200",
      *          description="Get list topics by id",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *              @OA\Schema(ref="#/components/schemas/ApiResult"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response="404",
+     *          description="Not found any group or topic(s)",
      *          @OA\MediaType(
      *              mediaType="application/json",
      *              @OA\Schema(ref="#/components/schemas/ApiResult"),

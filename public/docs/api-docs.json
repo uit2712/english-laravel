@@ -6,6 +6,48 @@
         "version": "1.0.0"
     },
     "paths": {
+        "/cache/checkConnection": {
+            "get": {
+                "tags": [
+                    "Cache"
+                ],
+                "summary": "Check cache connection",
+                "operationId": "340465e746a0d59117fae52123eb503e",
+                "responses": {
+                    "200": {
+                        "description": "Check cache connection result",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResult"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/cache/flushAll": {
+            "delete": {
+                "tags": [
+                    "Cache"
+                ],
+                "summary": "Flush all cache",
+                "operationId": "6026c37a3e991e304e2e459bb4e6d564",
+                "responses": {
+                    "200": {
+                        "description": "Flush all cache",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResult"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/groups": {
             "get": {
                 "tags": [
@@ -16,6 +58,16 @@
                 "responses": {
                     "200": {
                         "description": "Get list groups",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResult"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found any group(s)",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -52,6 +104,16 @@
                                 }
                             }
                         }
+                    },
+                    "404": {
+                        "description": "Not found any group",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResult"
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -74,6 +136,16 @@
                 "responses": {
                     "200": {
                         "description": "Get list topics by id",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResult"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found any group or topic(s)",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -131,6 +203,10 @@
         }
     },
     "tags": [
+        {
+            "name": "Cache",
+            "description": "Cache"
+        },
         {
             "name": "Groups",
             "description": "Groups"

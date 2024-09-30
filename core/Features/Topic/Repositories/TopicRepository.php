@@ -65,7 +65,7 @@ class TopicRepository implements TopicRepositoryInterface
             return $result;
         }
 
-        $data = Database::select("SELECT id, name FROM {$this->tableName} WHERE group_id=$groupId");
+        $data = Database::select("SELECT id, name, group_id FROM {$this->tableName} WHERE group_id=$groupId");
         $result->data = Topic::getMapper()->mapFromDbToListEntities($data);
 
         $result->success = ArrayHelper::isHasItems($result->data);
@@ -74,6 +74,7 @@ class TopicRepository implements TopicRepositoryInterface
         } else {
             $result->message = sprintf(ErrorMessage::NOT_FOUND_ITEM, $this->name);
             $result->responseCode = HttpResponseCode::NOT_FOUND;
+            $result->data = $data;
         }
 
         return $result;
