@@ -58,6 +58,8 @@
         "make:migration": "php artisan make:migration",
         "rollback:migration": "php artisan migrate:rollback",
         "migrate": "php artisan migrate",
+        "migrate:seed": "php artisan migrate --seed",
+        "migrate:test": "php artisan migrate --env=testing",
         "reset:migrate": "php artisan migrate:reset",
         "swagger": "php artisan vendor:publish --provider \"L5Swagger\\L5SwaggerServiceProvider\" && php artisan l5-swagger:generate",
         "test": "php artisan test",
