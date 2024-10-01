@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Core\Features\Group\Facades\GroupApi;
+use Illuminate\Http\Request;
 use OpenApi\Annotations as OA;
 
 class GroupController extends Controller
@@ -12,9 +13,21 @@ class GroupController extends Controller
      *      path="/groups",
      *      summary="Get groups",
      *      tags={"Groups"},
+     *      @OA\Parameter(
+     *          in="query",
+     *          name="page",
+     *          description="Page",
+     *          required=true
+     *      ),
+     *      @OA\Parameter(
+     *          in="query",
+     *          name="perPage",
+     *          description="Per page",
+     *          required=true
+     *      ),
      *      @OA\Response(
      *          response="200",
-     *          description="Get list groups",
+     *          description="Get multiple groups",
      *          @OA\MediaType(
      *              mediaType="application/json",
      *              @OA\Schema(ref="#/components/schemas/ApiResult"),
@@ -29,10 +42,11 @@ class GroupController extends Controller
      *          )
      *      )
      * )
+     *
      */
-    public function getAll()
+    public function getMultiple(Request $request)
     {
-        $result = GroupApi::getAll();
+        $result = GroupApi::getMultiple($request->query('page'), $request->query('perPage'));
         return response()->json($result, $result->responseCode);
     }
 

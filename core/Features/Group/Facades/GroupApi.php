@@ -4,9 +4,11 @@ namespace Core\Features\Group\Facades;
 
 use Core\Features\Group\UseCases\GetGroupByIdUseCase;
 use Core\Features\Group\UseCases\GetListTopicsByGroupIdUseCase;
+use Core\Features\Group\UseCases\GetMultipleGroupsUseCase;
 use Core\Features\Group\UseCases\ResetTableGroupUseCase;
 use Core\Features\Group\ViewModels\GetGroupByIdViewModel;
 use Core\Features\Group\ViewModels\GetListTopicsByGroupIdViewModel;
+use Core\Features\Group\ViewModels\GetMultipleGroupsViewModel;
 
 class GroupApi
 {
@@ -70,10 +72,10 @@ class GroupApi
      */
     public static function getMultiple($pageIndex, $perPage)
     {
-        $model = new GetListTopicsByGroupIdViewModel($pageIndex, $perPage);
+        $model = new GetMultipleGroupsViewModel($pageIndex, $perPage);
 
         if (null == self::$getMultipleGroupsUseCase) {
-            self::$getMultipleGroupsUseCase = new GetListTopicsByGroupIdUseCase();
+            self::$getMultipleGroupsUseCase = new GetMultipleGroupsUseCase();
         }
 
         return self::$getMultipleGroupsUseCase->invoke($model);

@@ -2,7 +2,8 @@
 
 namespace Core\Features\Group\ViewModels;
 
-use Core\Constants\ErrorMessage;
+use Core\Constants\HttpResponseCode;
+use Core\Features\Group\Constants\GroupErrorMessage;
 use Core\Helpers\NumberHelper;
 use Core\Helpers\StringHelper;
 use Core\Models\Result;
@@ -38,12 +39,14 @@ class GetMultipleGroupsViewModel
     {
         $result = new Result();
         if (NumberHelper::isPositiveIntegerIncludeZero($this->pageIndex) === false) {
-            $result->message = sprintf(ErrorMessage::INVALID_PARAMETER, 'pageIndex');
+            $result->message = sprintf(GroupErrorMessage::INVALID_PARAMETER_PAGE_INDEX, 'pageIndex');
+            $result->responseCode = HttpResponseCode::BAD_REQUEST;
             return $result;
         }
 
         if (NumberHelper::isPositiveInteger($this->perPage) === false) {
-            $result->message = sprintf(ErrorMessage::INVALID_PARAMETER, 'perPage');
+            $result->message = sprintf(GroupErrorMessage::INVALID_PARAMETER_PER_PAGE, 'perPage');
+            $result->responseCode = HttpResponseCode::BAD_REQUEST;
             return $result;
         }
 

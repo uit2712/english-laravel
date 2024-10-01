@@ -54,10 +54,24 @@
                     "Groups"
                 ],
                 "summary": "Get groups",
-                "operationId": "a6f517d1b63bd12b0a2362d868189f5e",
+                "operationId": "8103ba310d86370d7b29d5fd1a6c9763",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page",
+                        "required": true
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Per page",
+                        "required": true
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "Get list groups",
+                        "description": "Get multiple groups",
                         "content": {
                             "application/json": {
                                 "schema": {

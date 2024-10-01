@@ -7,6 +7,7 @@ use Core\Constants\HttpResponseCode;
 use Core\Constants\SuccessMessage;
 use Core\Features\Database\Facades\Database;
 use Core\Features\Group\Constants\GroupConstants;
+use Core\Features\Group\Constants\GroupErrorMessage;
 use Core\Features\Group\Facades\Group;
 use Core\Features\Group\InterfaceAdapters\GroupRepositoryInterface;
 use Core\Features\Group\Models\GetGroupResult;
@@ -29,12 +30,14 @@ class GroupRepository implements GroupRepositoryInterface
     {
         $result = new GetListGroupsResult();
         if (NumberHelper::isPositiveIntegerIncludeZero($pageIndex) === false) {
-            $result->message = sprintf(ErrorMessage::INVALID_PARAMETER . ': pageIndex >= 0', 'pageIndex');
+            $result->message = sprintf(GroupErrorMessage::INVALID_PARAMETER_PAGE_INDEX, 'pageIndex');
+            $result->responseCode = HttpResponseCode::BAD_REQUEST;
             return $result;
         }
 
         if (NumberHelper::isPositiveInteger($perPage) === false) {
-            $result->message = sprintf(ErrorMessage::INVALID_PARAMETER . ': perPage > 0', 'perPage');
+            $result->message = sprintf(GroupErrorMessage::INVALID_PARAMETER_PER_PAGE, 'perPage');
+            $result->responseCode = HttpResponseCode::BAD_REQUEST;
             return $result;
         }
 
