@@ -51,9 +51,15 @@ class EncodeJsonToStringUseCaseTest extends TestCase
         $value2->test = 123;
         $expected2 = '{"test":123}';
 
+        $value3 = new stdClass();
+        $value3->first = 456;
+        $value3->second = "abc";
+        $expected3 = '{"first":456,"second":"abc"}';
+
         return [
             [$value1, $expected1],
             [$value2, $expected2],
+            [$value3, $expected3],
         ];
     }
 
