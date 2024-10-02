@@ -45,25 +45,29 @@ class EncodeJsonToStringUseCaseTest extends TestCase
     public static function getListValidValues(): array
     {
         $value1 = new stdClass();
+        $expected1 = '{}';
+
         $value2 = new stdClass();
         $value2->test = 123;
+        $expected2 = '{"test":123}';
 
         return [
-            [$value1],
-            [$value2],
+            [$value1, $expected1],
+            [$value2, $expected2],
         ];
     }
 
     /**
      * @param mixed|null $value Value.
+     * @param string $expectedValue Expected value.
      */
     #[DataProvider('getListValidValues')]
-    public function testDecodeStringSuccess($value): void
+    public function testDecodeStringSuccess($value, $expectedValue): void
     {
         $expectResult = new Result();
         $expectResult->success = true;
         $expectResult->message = sprintf(JsonConverterSuccessMessage::ENCODE_JSON_TO_STRING_SUCCESS);
-        $expectResult->data = json_encode($value);
+        $expectResult->data = $expectedValue;
 
         $actualResult = JsonConverterApi::encode($value);
 
