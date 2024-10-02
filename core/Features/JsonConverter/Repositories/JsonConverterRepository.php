@@ -48,6 +48,16 @@ class JsonConverterRepository implements JsonConverterRepositoryInterface
     {
         $result = new Result();
 
+        if (is_object($value) === false) {
+            $result->message = sprintf(ErrorMessage::INVALID_PARAMETER, 'value');
+            $result->responseCode = HttpResponseCode::BAD_REQUEST;
+            return $result;
+        }
+
+        $result->success = true;
+        $result->message = sprintf(JsonConverterSuccessMessage::ENCODE_JSON_TO_STRING_SUCCESS);
+        $result->data = json_encode($value);
+
         return $result;
     }
 
