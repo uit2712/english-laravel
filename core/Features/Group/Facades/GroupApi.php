@@ -5,6 +5,7 @@ namespace Core\Features\Group\Facades;
 use Core\Features\Group\UseCases\GetGroupByIdUseCase;
 use Core\Features\Group\UseCases\GetListTopicsByGroupIdUseCase;
 use Core\Features\Group\UseCases\GetMultipleGroupsUseCase;
+use Core\Features\Group\UseCases\ReadListGroupsFromCsvFileUseCase;
 use Core\Features\Group\UseCases\ResetTableGroupUseCase;
 use Core\Features\Group\ViewModels\GetGroupByIdViewModel;
 use Core\Features\Group\ViewModels\GetListTopicsByGroupIdViewModel;
@@ -32,11 +33,16 @@ class GroupApi
      */
     public static $getMultipleGroupsUseCase;
 
+    /**
+     * @var ReadListGroupsFromCsvFileUseCase|null
+     */
+    public static $readListGroupsFromCsvFileUseCase;
+
     public static function getById($id)
     {
         $model = new GetGroupByIdViewModel($id);
 
-        if (null == self::$getGroupByIdUseCase) {
+        if (null === self::$getGroupByIdUseCase) {
             self::$getGroupByIdUseCase = new GetGroupByIdUseCase();
         }
 
@@ -45,7 +51,7 @@ class GroupApi
 
     public static function resetTable()
     {
-        if (null == self::$resetTableGroupUseCase) {
+        if (null === self::$resetTableGroupUseCase) {
             self::$resetTableGroupUseCase = new ResetTableGroupUseCase();
         }
 
@@ -59,7 +65,7 @@ class GroupApi
     {
         $model = new GetListTopicsByGroupIdViewModel($id);
 
-        if (null == self::$getListTopicsByGroupIdUseCase) {
+        if (null === self::$getListTopicsByGroupIdUseCase) {
             self::$getListTopicsByGroupIdUseCase = new GetListTopicsByGroupIdUseCase();
         }
 
@@ -74,10 +80,19 @@ class GroupApi
     {
         $model = new GetMultipleGroupsViewModel($pageIndex, $perPage);
 
-        if (null == self::$getMultipleGroupsUseCase) {
+        if (null === self::$getMultipleGroupsUseCase) {
             self::$getMultipleGroupsUseCase = new GetMultipleGroupsUseCase();
         }
 
         return self::$getMultipleGroupsUseCase->invoke($model);
+    }
+
+    public static function readFromCsvFile()
+    {
+        if (null === self::$readListGroupsFromCsvFileUseCase) {
+            self::$readListGroupsFromCsvFileUseCase = new ReadListGroupsFromCsvFileUseCase();
+        }
+
+        return self::$readListGroupsFromCsvFileUseCase->invoke();
     }
 }

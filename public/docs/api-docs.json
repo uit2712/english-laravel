@@ -171,6 +171,37 @@
                 }
             }
         },
+        "/groups/readFromCsvFile": {
+            "get": {
+                "tags": [
+                    "Groups"
+                ],
+                "summary": "Get list groups from csv file",
+                "operationId": "5419050f281940b316601c01be1e694a",
+                "responses": {
+                    "200": {
+                        "description": "Get list groups from csv file success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResult"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found any group(s)",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResult"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/topics/{id}": {
             "get": {
                 "tags": [

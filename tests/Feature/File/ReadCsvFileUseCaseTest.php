@@ -7,6 +7,7 @@ use Core\Constants\HttpResponseCode;
 use Core\Constants\SuccessMessage;
 use Core\Features\File\Facades\CsvFileApi;
 use Core\Features\FilePath\Facades\FilePathApi;
+use Core\Features\Group\Constants\GroupConstants;
 use Core\Models\Result;
 use Tests\TestCase;
 
@@ -46,7 +47,7 @@ class ReadCsvFileUseCaseTest extends TestCase
 
     public function testReturnsFileExists(): void
     {
-        $filePath = FilePathApi::getBasePath() . '/core/Data/Groups.csv';
+        $filePath = FilePathApi::getBasePath() . GroupConstants::CSV_DATA_RELATIVE_FILE_PATH;
 
         $actualResult = CsvFileApi::read($filePath);
 
@@ -61,7 +62,7 @@ class ReadCsvFileUseCaseTest extends TestCase
 
     public function testReturnsProperDataStructure(): void
     {
-        $filePath = FilePathApi::getBasePath() . '/core/Data/Groups.csv';
+        $filePath = FilePathApi::getBasePath() . GroupConstants::CSV_DATA_RELATIVE_FILE_PATH;
 
         $actualResult = CsvFileApi::read($filePath);
 

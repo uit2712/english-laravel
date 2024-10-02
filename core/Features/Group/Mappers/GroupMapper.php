@@ -16,7 +16,10 @@ class GroupMapper implements GroupMapperInterface
             return null;
         }
 
-        if (isset($data->id) === false || NumberHelper::isPositiveInteger($data->id) === false) {
+        if (
+            isset($data->id) === false ||
+            NumberHelper::isPositiveInteger(intval($data->id)) === false
+        ) {
             return null;
         }
 
@@ -25,7 +28,7 @@ class GroupMapper implements GroupMapperInterface
         }
 
         $result = new GroupEntity();
-        $result->id = $data->id;
+        $result->id = intval($data->id);
         $result->name = $data->name;
 
         return $result;

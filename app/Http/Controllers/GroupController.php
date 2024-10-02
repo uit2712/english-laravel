@@ -123,4 +123,34 @@ class GroupController extends Controller
         $result = GroupApi::getListTopicsById($id);
         return response()->json($result, $result->responseCode);
     }
+
+    /**
+     * @OA\Get(
+     *      path="/groups/readFromCsvFile",
+     *      summary="Get list groups from csv file",
+     *      tags={"Groups"},
+     *      @OA\Response(
+     *          response="200",
+     *          description="Get list groups from csv file success",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *              @OA\Schema(ref="#/components/schemas/ApiResult"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response="404",
+     *          description="Not found any group(s)",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *              @OA\Schema(ref="#/components/schemas/ApiResult"),
+     *          )
+     *      )
+     * )
+     *
+     */
+    public function readFromCsvFile()
+    {
+        $result = GroupApi::readFromCsvFile();
+        return response()->json($result, $result->responseCode);
+    }
 }
