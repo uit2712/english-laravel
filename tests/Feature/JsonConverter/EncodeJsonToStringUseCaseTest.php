@@ -81,6 +81,6 @@ class EncodeJsonToStringUseCaseTest extends TestCase
         $this->assertEquals($expectResult->success, $actualResult->success);
         $this->assertEquals($expectResult->message, $actualResult->message);
         $this->assertEquals($expectResult->responseCode, $actualResult->responseCode);
-        $this->assertEqualsCanonicalizing($expectResult->data, $actualResult->data);
+        $this->assertEquals($expectResult->data, $actualResult->data);
     }
 }

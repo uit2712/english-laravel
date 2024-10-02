@@ -41,6 +41,23 @@ class JsonConverterRepository implements JsonConverterRepositoryInterface
     {
         $result = new ArrayResult();
 
+        if (StringHelper::isHasValue($value) === false) {
+            $result->message = sprintf(ErrorMessage::NULL_OR_EMPTY_PARAMETER, 'value');
+            $result->responseCode = HttpResponseCode::BAD_REQUEST;
+            return $result;
+        }
+
+        $value = json_decode($value, true);
+        if (is_array($value) === false) {
+            $result->message = sprintf(JsonConverterErrorMessage::CAN_NOT_DECODE_STRING);
+            $result->responseCode = HttpResponseCode::BAD_REQUEST;
+            return $result;
+        }
+
+        $result->success = true;
+        $result->message = sprintf(JsonConverterSuccessMessage::DECODE_STRING_TO_ARRAY_SUCCESS);
+        $result->data = $value;
+
         return $result;
     }
 
