@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Core\Features\Group\Constants\GroupConstants;
+use Core\Features\Group\Facades\GroupApi;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -15,15 +16,10 @@ class GroupSeeder extends Seeder
     {
         $tableName = GroupConstants::TABLE_NAME;
         DB::statement("ALTER TABLE $tableName AUTO_INCREMENT=1");
-        DB::table($tableName)->insert([
-            [
-                'id' => 1,
-                'name' => 'Động vật',
-            ],
-            [
-                'id' => 2,
-                'name' => 'Nghề nghiệp',
-            ],
-        ]);
+
+        $getDataResult = GroupApi::readFromCsvFile();
+        if ($getDataResult->isHasArrayData()) {
+            DB::table($tableName)->insert(json_decode(json_encode($getDataResult->data), true));
+        }
     }
 }
