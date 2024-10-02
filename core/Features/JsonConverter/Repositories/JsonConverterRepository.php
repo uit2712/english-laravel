@@ -65,7 +65,7 @@ class JsonConverterRepository implements JsonConverterRepositoryInterface
     {
         $result = new Result();
 
-        if (is_object($value) === false) {
+        if (is_object($value) === false && is_array($value) === false) {
             $result->message = sprintf(ErrorMessage::INVALID_PARAMETER, 'value');
             $result->responseCode = HttpResponseCode::BAD_REQUEST;
             return $result;
@@ -74,13 +74,6 @@ class JsonConverterRepository implements JsonConverterRepositoryInterface
         $result->success = true;
         $result->message = sprintf(JsonConverterSuccessMessage::ENCODE_JSON_TO_STRING_SUCCESS);
         $result->data = json_encode($value);
-
-        return $result;
-    }
-
-    public function convertToArray($value): ArrayResult
-    {
-        $result = new ArrayResult();
 
         return $result;
     }

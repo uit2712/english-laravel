@@ -2,6 +2,7 @@
 
 namespace Core\Features\JsonConverter\Facades;
 
+use Core\Features\JsonConverter\UseCases\ConvertJsonToArrayUseCase;
 use Core\Features\JsonConverter\UseCases\DecodeStringToArrayUseCase;
 use Core\Features\JsonConverter\UseCases\DecodeStringToJsonUseCase;
 use Core\Features\JsonConverter\UseCases\EncodeJsonToStringUseCase;
@@ -22,6 +23,11 @@ class JsonConverterApi
      * @var DecodeStringToArrayUseCase|null
      */
     private static $decodeStringToArrayUseCase;
+
+    /**
+     * @var ConvertJsonToArrayUseCase|null
+     */
+    private static $convertJsonToArrayUseCase;
 
     /**
      * @param string|null $value Value.
@@ -57,5 +63,17 @@ class JsonConverterApi
         }
 
         return self::$decodeStringToArrayUseCase->invoke($value);
+    }
+
+    /**
+     * @param mixed|null $value Value.
+     */
+    public static function convertToArray($value)
+    {
+        if (null === self::$convertJsonToArrayUseCase) {
+            self::$convertJsonToArrayUseCase = new ConvertJsonToArrayUseCase();
+        }
+
+        return self::$convertJsonToArrayUseCase->invoke($value);
     }
 }

@@ -19,8 +19,4 @@ interface JsonConverterRepositoryInterface
      * @param mixed|null $value Value.
      */
     public function encode($value): Result;
-    /**
-     * @param mixed|null $value Value.
-     */
-    public function convertToArray($value): ArrayResult;
 }

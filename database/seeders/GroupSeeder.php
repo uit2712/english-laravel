@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Core\Features\Group\Constants\GroupConstants;
 use Core\Features\Group\Facades\GroupApi;
+use Core\Features\JsonConverter\Facades\JsonConverterApi;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -19,7 +20,9 @@ class GroupSeeder extends Seeder
 
         $getDataResult = GroupApi::readFromCsvFile();
         if ($getDataResult->isHasArrayData()) {
-            DB::table($tableName)->insert(json_decode(json_encode($getDataResult->data), true));
+            $data = $getDataResult->data;
+            $dataAsArray = JsonConverterApi::convertToArray($data)->data;
+            DB::table($tableName)->insert($dataAsArray);
         }
     }
 }
