@@ -1,0 +1,254 @@
+id,name,pronunciation,meaning,image,topic_id
+1,cat,/kæt/,mèo,,1
+2,kitten,/ˈkɪt.ən/,mèo con,,1
+3,dog,/dɒg/,chó,,1
+4,bitch,/bɪtʃ/,chó cái,,1
+5,puppy,/ˈpʌp.i/,chó con,,1
+6,parrot,/’pærət/,con vẹt,,1
+7,gecko,/’gekou/,con tắc kè,,1
+8,chinchilla,/tʃin’tʃilə/,sóc sinsin (ở nam-mỹ),,1
+9,dalmatian,/dælˈmeɪʃən/,chó đốm,,1
+10,guinea pig,/ˈgɪni pig/,chuột lang,,1
+11,hamste,/’hæmstə/,r  chuột đồng,,1
+12,rabbit,/’ræbit/,thỏ,,1
+13,bird,/bəd/,: chim,,1
+14,ferret,/’ferit/,chồn furô,,1
+15,betta fish,/ˈbɛtə fiʃ/,(fighting fish)  cá chọi,,1
+16,bird,"",các loài chim nói chung,,2
+17,pheasant,/ˈfɛznt/,gà lôi,,2
+18,swallow,/ˈswɒləʊ/,chim én,,2
+19,canary,/kəˈneəri/,chim hoàng yến,,2
+20,pigeon,/ˈpɪʤɪn/,chim bồ câu,,2
+21,parrot,/ˈpærət/,vẹt,,2
+22,crow,/krəʊ/,quạ,,2
+23,hummingbird,/ˈhʌmɪŋbɜːd/,chim ruồi,,2
+24,raven,/ˈreɪvn/,quạ,,2
+25,quail,/kweɪl/,chim cút,,2
+26,kingfisher,/ˈkɪŋˌfɪʃə/,chim bói cá,,2
+27,swan,/swɒn/,thiên nga,,2
+28,woodpecker,/ˈwʊdˌpɛkə/,chim gõ kiến,,2
+29,toucan,/ˈtuːkən/,chim toucan,,2
+30,sparrow,/ˈspærəʊ/,chim sẻ,,2
+31,peacock,/ˈpiːkɒk/,công,,2
+32,pengui,/ˈpɛŋgwɪn/,n  chim cánh cụt,,2
+33,ostrich,/ˈɒstrɪʧ/,đà điểu,,2
+34,seagull,/ˈsiːgʌl/,chim mòng biển,,2
+35,eagle,/ˈiːgl/,đại bàng,,2
+36,flamingo,/fləˈmɪŋgəʊ/,hồng hạc,,2
+37,hawk,/hɔːk/,diều hâu,,2
+38,stork,/stɔːk/,cò,,2
+39,falcon,/ˈfɔːlkən/,chim ưng,,2
+40,vulture,/ˈvʌlʧə/,kền kền,,2
+41,hawk,/hɔk/,"diều hâu, chim ưng",,2
+42,hen,/hen/,gà mái,,2
+43,hummingbird,/’hʌmiɳ /bəd/,chim ruồi,,2
+44,ostrich,/’ɔstritʃ/,đà điểu châu phi,,2
+45,owl,/aul/,chim cú,,2
+46,parrot,/’pærət/,chim vẹt,,2
+47,peacock,/’pikɔk/,chim công,,2
+48,pelican,/’pelikən/,chim bồ nông,,2
+49,petrel,/’petrəl/,hải âu pê-tren (loại nhỏ),,2
+50,crab,/kræb/,cua,,3
+51,seal,/siːl/,hải cẩu,,3
+52,octopus,/ˈɒktəpəs/,bạch tuộc,,3
+53,shark,/ʃɑːk/,cá mập,,3
+54,seahorse,/ˈsiːhɔːs/,cá ngựa,,3
+55,walrus,/ˈwɔːlrəs/,voi biển,,3
+56,starfish,/ˈstɑːfɪʃ/,sao biển,,3
+57,whale,/weɪl/,cá voi,,3
+58,penguin,/ˈpɛŋgwɪn/,chim cánh cụt,,3
+59,squid,/skwɪd/,con mực,,3
+60,lobster,/ˈlɒbstə/,tôm hùm,,3
+61,shrimp,/ʃrɪmp/,tôm,,3
+62,coral,/ˈkɒrəl/,san hô,,3
+63,seaweed,/ˈsiːwiːd/,rong biển,,3
+64,clam,/klæmz/,con nghêu,,3
+65,sentinel crab,/ˈsɛntɪnl kræb/,con ghẹ,,3
+66,dolphin,/ˈdɒlfɪn/,cá heo,,3
+67,mussel,/ˈmʌsl/,con trai,,3
+68,oyster,/ˈɔɪstə/,con hàu,,3
+69,scallop,/ˈskɒləp/,sò điệp,,3
+70,goldfish,/ˈgəʊldfɪʃ/,cá vàng,,3
+71,salmon,/ˈsæmən/,cá hồi,,3
+72,sea snail,/siː/ /sneɪl/,ốc biển,,3
+73,sea urchin,/siː/ /ˈɜːʧɪn/,nhím biển,,3
+74,sea turtle,/siː/ /ˈtɜːtl/,rùa biển,,3
+75,sea lion,/siː/ /ˈlaɪən/,sư tử biển,,3
+76,salamander,/ˈsæləˌmændə/,kỳ giông,,3
+77,hippopotamus,/ˌhɪpəˈpɒtəməs/,hà mã,,3
+78,fish,/fɪʃ/,cá,,3
+79,clownfish,/ˈklaʊnfɪʃ/,cá hề,,3
+80,common carp,/ˈkɒmən kɑːp/,cá chép,,3
+81,crocodile,/ˈkrɒkədaɪl/,cá sấu,,3
+82,anchovy,/ˈænʧəvi/,cá cơm biển,,3
+83,sperm whale,/spɜːm weɪl/,cá nhà táng,,3
+84,catfish,/ˈkætˌfɪʃ/,cá trê,,3
+85,mackerel,/ˈmækrəl/,cá thu,,3
+86,pomfret,/ˈpɒmfrɪt/,cá chim,,3
+87,eel,/iːl/,lươn,,3
+88,flounder,/ˈflaʊndə/,cá bơn,,3
+89,goby,/ˈɡəʊbi/,cá bống,,3
+90,herring,/ˈhɛrɪŋ/,cá trích,,3
+91,catfish,/ˈkætfɪʃ/,cá trê,,3
+92,tench,/tentʃ/,cá mè,,3
+93,tilapia,/tɪˈlɑːpiə/,cá rô,,3
+94,pufferfis,/ˈpʌfəfɪʃ/,h  cá nóc,,3
+95,suckermouth catfish,/ˈsʌkəmaʊθ ˈkatfɪʃ/,cá dọn bể,,3
+96,red tilapia,/rɛd tɪˈleɪpɪə/,cá diêu hồng,,3
+97,swordfish,/ˈsɔːdfɪʃ/,cá kiếm,,3
+98,stingray,/ˈstɪŋreɪ/,cá đuối,,3
+99,tuna,/ˈtjuːnə/,cá ngừ,,3
+100,anabas,/ˈanəbəs/,cá rô,,3
+101,flowerhorn,/ˈflaʊəhɔːn/,cá la hán,,3
+102,sardine,/sɑːˈdiːn/,cá mòi,,3
+103,snakehead fish,/ˈsneɪkhɛd fɪʃ/,cá quả,,3
+104,angelfish,/ˈeɪndʒ(ə)lfɪʃ/,cá thiên thần,,3
+105,alligator,/ˈælɪgeɪtə/,cá sấu mỹ,,3
+106,sea snake,/siː sneɪk/,rắn biển,,3
+107,frog,/frɒg/,ếch,,3
+108,jellyfish,/ˈdʒel.i.fɪʃ/,con sứa,,3
+109,killer whale,/ˈkɪl.əʳ weɪl/,loại cá voi nhỏ màu đen trắng,,3
+110,seal,/siːl/,chó biển,,3
+111,squid,/skwɪd/,mực ống,,3
+112,bear,/beə/,gấu,,4
+113,polar bear,/ˈpəʊlə beə/,gấu bắc cực,,4
+114,panda,/ˈpændə/,gấu trúc,,4
+115,tiger cub,/ˈtaɪgə kʌb/,hổ con,,4
+116,lion,/ˈlaɪən/,sư tử,,4
+117,lioness,/ˈlaɪənes/,sư tử cái,,4
+118,lion cu,/ˈlaɪən kʌb/,b   sư tử con,,4
+119,tiger,/ˈtaɪgə/,hổ,,4
+120,tigress,/ˈtaɪɡrəs/,hổ cái,,4
+121,panther,/ˈpænθə/,báo đen,,4
+122,leopar,/ˈlɛpəd/,d  báo đốm,,4
+123,cheeta,/ˈʧiːtə/,h  báo ghê.ta,,4
+124,gazelle,/ɡəˈzel/,linh dương,,4
+125,rhinocero,/raɪˈnɒsərəs/,s  tê giác,,4
+126,fox,/fɒks/,cáo,,4
+127,fawn,/fɔːn/,nai con,,4
+128,reindeer,/ˈreɪndɪə/,tuần lộc,,4
+129,elk,/ɛlk/,nai sừng tấm,,4
+130,moose,/muːs/,nai sừng tấm,,4
+131,ra,/ræt/,t  chuột,,4
+132,elephant,/ˈɛlɪfənt/,voi,,4
+133,wolf,/wʊlf/,sói,,4
+134,deer,/dɪə/,nai,,4
+135,doe,/dəʊ/,con nai cái,,4
+136,giraffe,/ʤɪˈrɑːf/,hươu cao cổ,,4
+137,frog /frɒg/ ếch,/frɒg/,ếch,,4
+138,snake,/sneɪk/,rắn,,4
+139,alligator,/ˈælɪgeɪtə/,cá sấu,,4
+140,crocodile,/ˈkrɒkədaɪl/,cá sấu,,4
+141,bat,/bæt/,dơi,,4
+142,gorilla,/gəˈrɪlə/,gô ri la,,4
+143,giant panda,/ˈʤaɪənt ˈpændə/,gấu trúc,,4
+144,boar,/bɔː/,lợn rừng,,4
+145,koala,/kəʊˈɑːlə/,koala,,4
+146,camel,/ˈkæməl/,lạc đà,,4
+147,sloth,/sləʊθ/,con lười,,4
+148,hyena/,"",haɪˈiːnə linh cẩu,,4
+149,chimpanzee,/ˌʧɪmpənˈziː/,tinh tinh,,4
+150,zebra,/ˈziːbrə/,ngựa vằn,,4
+151,squirrel,/ˈskwɪrəl/,sóc,,4
+152,baboon,/bəˈbuːn/,khỉ đầu chó,,4
+153,monkey,/ˈmʌŋki/,khỉ,,4
+154,racoon,/rəˈkuːn/,gấu mèo,,4
+155,platypus,/ˈplætɪpəs/,thú mỏ vịt,,4
+156,otter,/ˈɒtə/,rái cá,,4
+157,skunk,/skʌŋk/,chồn hôi,,4
+158,chimpanzee,/ˌʧɪmpənˈziː/,con hắc tinh tinh,,4
+159,badger,/ˈbæʤə/,con lửng,,4
+160,weasel,/ˈwiːzl/,chồn,,4
+161,kangaroo,/ˌkæŋgəˈru/,con chuột túi,,4
+162,hedgehog,/ˈhɛʤhɒg/,con nhím (ăn thịt),,4
+163,porcupine,/ˈpɔːkjʊpaɪn/,con nhím (ăn cỏ),,4
+164,gazelle,/gəˈzel/,linh dương gazen,,4
+165,cheetah,/ˈtʃiː.tə/,báo gêpa,,4
+166,gnu,/nuː/,linh dương đầu bò,,4
+167,sheep,/ʃiːp/,cừu,,5
+168,donkey,/ˈdɒŋki/,lừa,,5
+169,goat,/gəʊt/,dê,,5
+170,cow,/kaʊ/,bò,,5
+171,buffalo,/ˈbʌfələʊ/,trâu,,5
+172,goose /guːs/ ngỗng,/guːs/,ngỗng,,5
+173,horse,/hɔːs/,ngựa,,5
+174,dalf,/kæf/,bê con,,5
+175,duck,/dʌk/,vịt,,5
+176,drake,/dreɪk/,vịt đực,,5
+177,duckling,/ˈdʌklɪŋ/,vịt con,,5
+178,chicken,/ˈʧɪkɪn/,gà,,5
+179,rooster /ˈruːstə/ gà trống,/ˈruːstə/,gà trống,,5
+180,hen,/hɛn/,gà mái,,5
+181,turkey,/ˈtɜːki/,gà tây,,5
+182,piglet,/ˈpɪglət/,lợn con,,5
+183,rabbit,/ˈræbɪt/,thỏ,,5
+184,ox,/ɒks/,bò,,5
+185,water buffalo,/ˈwɔːtə ˈbʌfələʊ/,trâu,,5
+186,pig,/pɪg/,lợn,,5
+187,bunny,/ˈbʌni/,thỏ con,,5
+188,earthworm,/ɜːθ wɜːm/,giun đất,,5
+189,cattle,/ˈkætl/,gia súc,,5
+190,dog,"",dɔːɡ chó đực,,5
+191,puppy,/ˈpʌpi/,chó con,,5
+192,queen,/kwiːn/,mèo cái,,5
+193,kitten,/ˈkɪtn/,mèo con,,5
+194,cat,/kæt/,mèo,,5
+195,sheep,/ʃiːp/,con cừu,,5
+196,dairy cow,/ˈdeə.ri kaʊ/,con bò sữa,,5
+197,horses,/hɔːsiz/,con ngựa,,5
+198,paѕture,/ˈpɑːѕ.tʃəʳ/,bãi ᴄhăn thả ᴠật nuôi,,5
+199,farmer,/ˈfɑː.məʳ/,"người nông dân, ᴄhủ trang trại",,5
+200,barnуard,/ˈbɑːn.jɑːd/,ѕân nuôi gia ѕúc,,5
+201,cattle,/ˈkæt.ļ/,(một đàn) gia ѕúᴄ,,5
+202,coᴡboу,/ˈkaʊ.bɔɪ/,ᴄậu bé ᴄhăn bò,,5
+203,coᴡgirl,/ˈkaʊ.gɜːl/,ᴄô gái ᴄhăn bò,,5
+204,alligato,/ˈæl.ɪ.geɪ.təʳ/,r  cá sấu mỹ,,6
+205,crocodile,/ˈkrɒk.ə.daɪl/,cá sấu,,6
+206,toad,/təʊd/,con cóc,,6
+207,frog,/frɒg/,con ếch,,6
+208,dinosaurs,/’daɪnəʊsɔː/,khủng long,,6
+209,cobra - fang,/ˈkəʊ.brə. fæŋ/,rắn hổ mang-răng nanh,,6
+210,chameleon,/kəˈmiː.li.ən/,tắc kè hoa,,6
+211,dragon,/ˈdræg.ən/,con rồng,,6
+212,turtle-shell,/ˈtɜː.tl ʃel/,mai rùa,,6
+213,lizard/,"",ˈlɪz.əd thằn lằn,,6
+214,ant,/ænt/,- con kiến,,7
+215,fire ant,/faɪə ænt/,- kiến lửa,,7
+216,rove beetle,/rəʊv biːtl/,- kiến ba khoang,,7
+217,millipede,/ˈmɪləpiːd/,- con cuốn chiếu,,7
+218,spider,/ˈspaɪ.dəʳ/,- nhện,,7
+219,cocoon,/kəˈkuːn/,- kén,,7
+220,aphid,/ˈeɪfɪd/,- con rệp cây,,7
+221,centipede,/ˈsen.tɪ.piːd/,- con rết,,7
+222,scorpion,/ˈskɔː.pi.ən/,- bọ cạp,,7
+223,flea  /fliː/- con bọ chét,"","",,7
+224,slug,/slʌɡ/,- sên nhớt,,7
+225,earthworm,/ˈɜːθ wɜːm/,- giun đất,,7
+226,maggot,/ˈmæɡət/,- con giòi,,7
+227,snail,/sneɪl/,- ốc sên,,7
+228,tapeworm,/ˈteɪp wɜːm/,- sán dây,,7
+229,hookworm,/hʊk wɜːm/,- giun móc,,7
+230,large roundworm,/lɑːdʒ raʊnd wɜːm/,- giun đũa,,7
+231,tick,/tɪk/,- con bọ ve,,7
+232,louse,/laʊs/,- con rận,,7
+233,caterpillar,/ˈkæt.ə.pɪl.əʳ/,- sâu bướm,,8
+234,giant water bug,/ˈdʒaɪənt ˈwɔːtə bʌɡ/,- cà cuống,,8
+235,stink bug,/stɪŋk bʌɡ/,- bọ xít,,8
+236,cicada,/səˈkɑːdə/,- ve sầu,,8
+237,butterfly,/ˈbʌt.ə.flaɪ/,- bướm,,8
+238,moth,/mɒθ/,"- bướm đêm, sâu bướm",,8
+239,cockroach,/ˈkɒk.rəʊtʃ/,- con gián,,8
+240,cricket,/ˈkrɪk.ɪt/,- con dế,,8
+241,dragonfly,/ˈdrægən flaɪ/,- chuồn chuồn,,8
+242,damselfly,/ˈdæmzəl flaɪ/,- chuồn chuồn kim,,8
+243,bee,/biː/,- con ong,,8
+244,wasp,/wɒsp/,- ong bắp cày,,8
+245,firefly,/ˈfaɪə flaɪ/,- đom đóm,,8
+246,fly,/flaɪz/,- con ruồi,,8
+247,grasshopper,/ˈgrɑːsˌhɒp.əʳ/,- châu chấu,,8
+248,termite,/ˈtɜː.maɪt/,- con mối,,8
+249,mosquito,/məˈskiː.təʊ/,- con muỗi,,8
+250,ladybug,/ˈleɪ.di.bɜːd/,- con bọ rùa,,8
+251,scarab beetle,/ˈskærəb ˈbiː.tļ/,- bọ hung,,8
+252,mantis,/ˈmæn.tɪs/,- con bọ ngựa,,8
+253,beetle,/ˈbiː.tļ/,- bọ cánh cứng,,8
