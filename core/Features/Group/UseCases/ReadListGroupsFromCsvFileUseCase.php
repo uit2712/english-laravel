@@ -22,7 +22,7 @@ class ReadListGroupsFromCsvFileUseCase
         }
 
         $result->success = true;
-        $result->data = Group::getMapper()->mapFromDbToListEntities($getDataFromFileResult->data);
+        $result->data = Group::getFileMapper()->mapFromFileToListDbRows($getDataFromFileResult->data);
 
         return $result;
     }
