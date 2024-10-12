@@ -230,6 +230,37 @@
                     }
                 }
             }
+        },
+        "/topics/readFromCsvFile": {
+            "get": {
+                "tags": [
+                    "Topics"
+                ],
+                "summary": "Get list topics from csv file",
+                "operationId": "665e117caed38b46648f2498ad1d69a7",
+                "responses": {
+                    "200": {
+                        "description": "Get list topics from csv file success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResult"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found any topic(s)",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResult"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "components": {

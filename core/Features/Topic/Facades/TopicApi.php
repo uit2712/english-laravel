@@ -3,6 +3,7 @@
 namespace Core\Features\Topic\Facades;
 
 use Core\Features\Topic\UseCases\GetTopicByIdUseCase;
+use Core\Features\Topic\UseCases\ReadListTopicsFromCsvFileUseCase;
 use Core\Features\Topic\UseCases\ResetTableTopicUseCase;
 use Core\Features\Topic\ViewModels\GetTopicByIdViewModel;
 
@@ -17,6 +18,11 @@ class TopicApi
      * @var ResetTableTopicUseCase|null
      */
     public static $resetTableTopicUseCase;
+
+    /**
+     * @var ReadListTopicsFromCsvFileUseCase|null
+     */
+    public static $readListTopicsFromCsvFileUseCase;
 
     public static function getById($id)
     {
@@ -36,5 +42,14 @@ class TopicApi
         }
 
         return self::$resetTableTopicUseCase->invoke();
+    }
+
+    public static function readFromCsvFile()
+    {
+        if (null == self::$readListTopicsFromCsvFileUseCase) {
+            self::$readListTopicsFromCsvFileUseCase = new ReadListTopicsFromCsvFileUseCase();
+        }
+
+        return self::$readListTopicsFromCsvFileUseCase->invoke();
     }
 }

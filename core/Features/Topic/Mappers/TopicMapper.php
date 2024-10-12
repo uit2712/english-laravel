@@ -16,7 +16,7 @@ class TopicMapper implements TopicMapperInterface
             return null;
         }
 
-        if (isset($data->id) === false || NumberHelper::isPositiveInteger($data->id) === false) {
+        if (isset($data->id) === false || NumberHelper::isPositiveInteger(intval($data->id)) === false) {
             return null;
         }
 
@@ -24,14 +24,14 @@ class TopicMapper implements TopicMapperInterface
             return null;
         }
 
-        if (isset($data->group_id) === false || NumberHelper::isPositiveInteger($data->group_id) === false) {
+        if (isset($data->group_id) === false || NumberHelper::isPositiveInteger(intval($data->group_id)) === false) {
             return null;
         }
 
         $result = new TopicEntity();
-        $result->id = $data->id;
+        $result->id = intval($data->id);
         $result->name = $data->name;
-        $result->groupId = $data->group_id;
+        $result->groupId = intval($data->group_id);
 
         return $result;
     }

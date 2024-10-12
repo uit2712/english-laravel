@@ -17,4 +17,5 @@ Route::get('/groups/{id}', [GroupController::class, 'getById'])->where('id', '[0
 Route::get('/groups/{id}/topics', [GroupController::class, 'getListTopicsById'])->where('id', '[0-9]+');
 Route::get('/groups/readFromCsvFile', [GroupController::class, 'readFromCsvFile']);
 
-Route::get('/topics/{id}', [TopicController::class, 'getById']);
+Route::get('/topics/{id}', [TopicController::class, 'getById'])->where('id', '[0-9]+');
+Route::get('/topics/readFromCsvFile', [TopicController::class, 'readFromCsvFile']);
