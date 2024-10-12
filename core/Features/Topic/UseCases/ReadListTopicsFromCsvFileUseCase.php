@@ -22,7 +22,7 @@ class ReadListTopicsFromCsvFileUseCase
         }
 
         $result->success = true;
-        $result->data = Topic::getMapper()->mapFromDbToListEntities($getDataFromFileResult->data);
+        $result->data = Topic::getFileMapper()->mapFromFileToListDbRows($getDataFromFileResult->data);
 
         return $result;
     }

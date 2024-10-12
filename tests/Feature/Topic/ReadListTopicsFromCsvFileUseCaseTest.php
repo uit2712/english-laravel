@@ -43,7 +43,7 @@ class ReadListTopicsFromCsvFileUseCaseTest extends TestCase
                 '*' => [
                     'id',
                     'name',
-                    'groupId',
+                    'group_id',
                 ]
             ]
         ]);
@@ -55,7 +55,7 @@ class ReadListTopicsFromCsvFileUseCaseTest extends TestCase
                 'data' => 'array',
                 'data.0.id' => 'integer',
                 'data.0.name' => 'string',
-                'data.0.groupId' => 'integer',
+                'data.0.group_id' => 'integer',
             ])
             ->etc());
     }
@@ -77,6 +77,6 @@ class ReadListTopicsFromCsvFileUseCaseTest extends TestCase
 
         $response->assertJsonPath('data.0.id', 1);
         $response->assertJsonPath('data.0.name', 'Thú cưng');
-        $response->assertJsonPath('data.0.groupId', 1);
+        $response->assertJsonPath('data.0.group_id', 1);
     }
 }

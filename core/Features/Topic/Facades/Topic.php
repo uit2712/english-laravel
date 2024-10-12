@@ -3,8 +3,10 @@
 namespace Core\Features\Topic\Facades;
 
 use Core\Features\Topic\InterfaceAdapters\CachedTopicRepositoryInterface;
+use Core\Features\Topic\InterfaceAdapters\TopicFileMapperInterface;
 use Core\Features\Topic\InterfaceAdapters\TopicMapperInterface;
 use Core\Features\Topic\InterfaceAdapters\TopicRepositoryInterface;
+use Core\Features\Topic\Mappers\TopicFileMapper;
 use Core\Features\Topic\Mappers\TopicMapper;
 use Core\Features\Topic\Repositories\CachedTopicRepository;
 use Core\Features\Topic\Repositories\TopicRepository;
@@ -25,6 +27,11 @@ class Topic
      * @var CachedTopicRepositoryInterface|null
      */
     private static $cachedRepo;
+
+    /**
+     * @var TopicFileMapperInterface|null
+     */
+    private static $fileMapper;
 
     public static function getMapper(): TopicMapperInterface
     {
@@ -51,5 +58,14 @@ class Topic
         }
 
         return self::$cachedRepo;
+    }
+
+    public static function getFileMapper(): TopicFileMapperInterface
+    {
+        if (null == self::$fileMapper) {
+            self::$fileMapper = new TopicFileMapper();
+        }
+
+        return self::$fileMapper;
     }
 }
