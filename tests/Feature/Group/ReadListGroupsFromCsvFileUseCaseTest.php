@@ -65,10 +65,10 @@ class ReadListGroupsFromCsvFileUseCaseTest extends TestCase
         $expectedResult->success = true;
         $expectedResult->message = sprintf(SuccessMessage::FILE_EXISTS, $filePath);
         $expectedResult->data[] = Group::getMapper()->mapFromDbToEntity(
-            json_decode(json_encode(['id' => 1, 'name' => 'Động vật']))
+            json_decode(json_encode(['id' => 1, 'name' => 'Tiếng Anh']))
         );
         $expectedResult->data[] = Group::getMapper()->mapFromDbToEntity(
-            json_decode(json_encode(['id' => 2, 'name' => 'Nghề nghiệp']))
+            json_decode(json_encode(['id' => 2, 'name' => 'Shipper Ahamove']))
         );
 
         $response = $this->get('/groups/readFromCsvFile');
@@ -76,6 +76,6 @@ class ReadListGroupsFromCsvFileUseCaseTest extends TestCase
         $response->assertJsonCount(2, 'data');
 
         $response->assertJsonPath('data.0.id', 1);
-        $response->assertJsonPath('data.0.name', 'Động vật');
+        $response->assertJsonPath('data.0.name', 'Tiếng Anh');
     }
 }
