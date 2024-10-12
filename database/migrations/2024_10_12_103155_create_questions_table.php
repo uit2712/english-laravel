@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('title', 750);
             $table->string('answer_a', 750);
-            $table->string('answer_b', 750);
+            $table->string('answer_b', 750)->nullable();
             $table->string('answer_c', 750)->nullable();
             $table->string('answer_d', 750)->nullable();
             $table->string('answer_e', 750)->nullable();
