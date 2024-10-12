@@ -109,12 +109,13 @@ class GetMultipleGroupsUseCaseTest extends TestCase
     {
         $this->seed(GroupSeeder::class);
 
-        $response = $this->get('/groups?page=0&perPage=1');
-
-        $response->assertJsonCount(1, 'data');
+        $response = $this->get('/groups?page=0&perPage=2');
 
         $response->assertJsonPath('data.0.id', 1);
-        $response->assertJsonPath('data.0.name', 'Động vật');
+        $response->assertJsonPath('data.0.name', 'Tiếng Anh');
+
+        $response->assertJsonPath('data.1.id', 2);
+        $response->assertJsonPath('data.1.name', 'Shipper Ahamove');
 
         TopicApi::resetTable();
     }

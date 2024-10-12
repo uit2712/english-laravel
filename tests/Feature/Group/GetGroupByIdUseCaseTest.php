@@ -79,7 +79,7 @@ class GetGroupByIdUseCaseTest extends TestCase
 
         $response = $this->get('/groups/1');
 
-        $response->assertJsonPath('data.name', 'Động vật');
+        $response->assertJsonPath('data.name', 'Tiếng Anh');
 
         GroupApi::resetTable();
     }
