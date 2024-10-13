@@ -2,9 +2,11 @@
 
 namespace Core\Features\Vocabulary\Facades;
 
+use Core\Features\Vocabulary\InterfaceAdapters\CachedVocabularyRepositoryInterface;
 use Core\Features\Vocabulary\InterfaceAdapters\VocabularyMapperInterface;
 use Core\Features\Vocabulary\InterfaceAdapters\VocabularyRepositoryInterface;
 use Core\Features\Vocabulary\Mappers\VocabularyMapper;
+use Core\Features\Vocabulary\Repositories\CachedVocabularyRepository;
 use Core\Features\Vocabulary\Repositories\VocabularyRepository;
 
 class Vocabulary
@@ -18,6 +20,11 @@ class Vocabulary
      * @var VocabularyRepositoryInterface|null
      */
     private static $repo;
+
+    /**
+     * @var CachedVocabularyRepositoryInterface|null
+     */
+    private static $cachedRepo;
 
     public static function getMapper(): VocabularyMapperInterface
     {
@@ -35,5 +42,14 @@ class Vocabulary
         }
 
         return self::$repo;
+    }
+
+    public static function getCachedRepo(): CachedVocabularyRepositoryInterface
+    {
+        if (null == self::$cachedRepo) {
+            self::$cachedRepo = new CachedVocabularyRepository();
+        }
+
+        return self::$cachedRepo;
     }
 }

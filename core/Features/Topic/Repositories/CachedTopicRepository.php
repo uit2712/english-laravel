@@ -51,7 +51,7 @@ class CachedTopicRepository implements CachedTopicRepositoryInterface
         $data = CustomCache::get($keyCache);
         if (null !== $data) {
             $result->success = true;
-            $result->message = sprintf(SuccessMessage::FOUND_ITEM, 'Topic');
+            $result->message = sprintf(SuccessMessage::FOUND_ITEM, self::NAME);
             $result->data = Topic::getMapper()->mapFromCacheToEntity($data);
             $result->isFromCache = true;
             return $result;
