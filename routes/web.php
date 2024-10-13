@@ -3,6 +3,7 @@
 use App\Http\Controllers\CacheController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\TopicController;
+use App\Http\Controllers\VocabularyController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -19,3 +20,5 @@ Route::get('/groups/readFromCsvFile', [GroupController::class, 'readFromCsvFile'
 
 Route::get('/topics/{id}', [TopicController::class, 'getById'])->where('id', '[0-9]+');
 Route::get('/topics/readFromCsvFile', [TopicController::class, 'readFromCsvFile']);
+
+Route::get('/vocabularies/readFromCsvFile', [VocabularyController::class, 'readFromCsvFile']);

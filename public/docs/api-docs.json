@@ -261,6 +261,37 @@
                     }
                 }
             }
+        },
+        "/vocabularies/readFromCsvFile": {
+            "get": {
+                "tags": [
+                    "Vocabularies"
+                ],
+                "summary": "Get list vocabularies from csv file",
+                "operationId": "64a6329e459bce979add25ed549e9d50",
+                "responses": {
+                    "200": {
+                        "description": "Get list vocabularies from csv file success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResult"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found any vocabulary(s)",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResult"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -290,6 +321,10 @@
         {
             "name": "Topics",
             "description": "Topics"
+        },
+        {
+            "name": "Vocabularies",
+            "description": "Vocabularies"
         }
     ]
 }

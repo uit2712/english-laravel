@@ -16,7 +16,7 @@ class VocabularyFileMapper implements VocabularyFileMapperInterface
             return null;
         }
 
-        if (isset($data->id) === false || NumberHelper::isPositiveInteger($data->id) === false) {
+        if (isset($data->id) === false || NumberHelper::isPositiveInteger(intval($data->id)) === false) {
             return null;
         }
 
@@ -24,25 +24,31 @@ class VocabularyFileMapper implements VocabularyFileMapperInterface
             return null;
         }
 
-        if (isset($data->topic_id) === false || NumberHelper::isPositiveInteger($data->topic_id) === false) {
+        if (isset($data->topic_id) === false || NumberHelper::isPositiveInteger(intval($data->topic_id)) === false) {
             return null;
         }
 
         $result = new stdClass();
-        $result->id = $data->id;
+        $result->id = intval($data->id);
         $result->name = $data->name;
-        $result->topic_id = $data->topic_id;
+        $result->topic_id = intval($data->topic_id);
 
         if (StringHelper::isHasValue($data->pronunciation)) {
             $result->pronunciation = $data->pronunciation;
+        } else {
+            $result->pronunciation = '';
         }
 
         if (StringHelper::isHasValue($data->meaning)) {
             $result->meaning = $data->meaning;
+        } else {
+            $result->meaning = '';
         }
 
         if (StringHelper::isHasValue($data->image)) {
             $result->image = $data->image;
+        } else {
+            $result->image = '';
         }
 
         return $result;
