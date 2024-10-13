@@ -5,6 +5,7 @@ namespace Core\Features\Vocabulary\Repositories;
 use Core\Constants\ErrorMessage;
 use Core\Constants\SuccessMessage;
 use Core\Features\Cache\Facades\CustomCache;
+use Core\Features\Vocabulary\Constants\VocabularyConstants;
 use Core\Features\Vocabulary\Entities\VocabularyEntity;
 use Core\Features\Vocabulary\Facades\Vocabulary;
 use Core\Features\Vocabulary\InterfaceAdapters\CachedVocabularyRepositoryInterface;
@@ -16,7 +17,6 @@ use Core\Helpers\StringHelper;
 class CachedVocabularyRepository implements CachedVocabularyRepositoryInterface
 {
     private const CACHE_GROUP = 'VOCABULARY';
-    private const NAME = 'Vocabulary';
 
     public function get($id): GetVocabularyResult
     {
@@ -30,7 +30,7 @@ class CachedVocabularyRepository implements CachedVocabularyRepositoryInterface
         $data = CustomCache::get($keyCache);
         if (null !== $data) {
             $result->success = true;
-            $result->message = sprintf(SuccessMessage::FOUND_ITEM, self::NAME);
+            $result->message = sprintf(SuccessMessage::FOUND_ITEM, VocabularyConstants::NAME);
             $result->data = Vocabulary::getMapper()->mapFromCacheToEntity($data);
             $result->isFromCache = true;
             return $result;

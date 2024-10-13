@@ -15,7 +15,6 @@ use Core\Helpers\NumberHelper;
 class VocabularyRepository implements VocabularyRepositoryInterface
 {
     private $tableName = '';
-    private $name = 'Vocabulary';
 
     public function __construct()
     {
@@ -41,9 +40,9 @@ class VocabularyRepository implements VocabularyRepositoryInterface
 
         $result->success = null !== $result->data;
         if ($result->success) {
-            $result->message = sprintf(SuccessMessage::FOUND_ITEM, $this->name);
+            $result->message = sprintf(SuccessMessage::FOUND_ITEM, VocabularyConstants::NAME);
         } else {
-            $result->message = sprintf(ErrorMessage::NOT_FOUND_ITEM, $this->name);
+            $result->message = sprintf(ErrorMessage::NOT_FOUND_ITEM, VocabularyConstants::NAME);
             $result->responseCode = HttpResponseCode::NOT_FOUND;
             $result->data = $data;
         }
