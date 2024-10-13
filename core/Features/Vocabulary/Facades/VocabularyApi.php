@@ -35,7 +35,7 @@ class VocabularyApi
     /**
      * @param string|null $id Id.
      */
-    public static function get($id)
+    public static function getById($id)
     {
         if (null == self::$getVocabularyByIdUseCase) {
             self::$getVocabularyByIdUseCase = new GetVocabularyByIdUseCase();

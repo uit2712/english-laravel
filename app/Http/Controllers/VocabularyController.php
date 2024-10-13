@@ -9,6 +9,35 @@ class VocabularyController extends Controller
 {
     /**
      * @OA\Get(
+     *      path="/vocabularies/{id}",
+     *      summary="Get vocabulary by id",
+     *      tags={"Vocabularies"},
+     *      @OA\Parameter(
+     *          in="path",
+     *          name="id",
+     *          description="Id",
+     *          required=true
+     *      ),
+     *      @OA\Response(
+     *          response="200",
+     *          description="Get vocabulary by id",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *              @OA\Schema(ref="#/components/schemas/ApiResult"),
+     *          )
+     *      ),
+     * )
+     *
+     * @param int|string|null $id Id
+     */
+    public function getById($id)
+    {
+        $result = VocabularyApi::getById($id);
+        return response()->json($result, $result->responseCode);
+    }
+
+    /**
+     * @OA\Get(
      *      path="/vocabularies/readFromCsvFile",
      *      summary="Get list vocabularies from csv file",
      *      tags={"Vocabularies"},

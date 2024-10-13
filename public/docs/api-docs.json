@@ -262,6 +262,35 @@
                 }
             }
         },
+        "/vocabularies/{id}": {
+            "get": {
+                "tags": [
+                    "Vocabularies"
+                ],
+                "summary": "Get vocabulary by id",
+                "operationId": "ae235b4b1a5a0883952839e8b8c3c473",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get vocabulary by id",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResult"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/vocabularies/readFromCsvFile": {
             "get": {
                 "tags": [
