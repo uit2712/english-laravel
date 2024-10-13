@@ -9,6 +9,7 @@ use Core\Features\Vocabulary\Constants\VocabularyConstants;
 use Core\Features\Vocabulary\Entities\VocabularyEntity;
 use Core\Features\Vocabulary\Facades\Vocabulary;
 use Core\Features\Vocabulary\InterfaceAdapters\CachedVocabularyRepositoryInterface;
+use Core\Features\Vocabulary\Models\GetListVocabulariesResult;
 use Core\Features\Vocabulary\Models\GetVocabularyResult;
 use Core\Helpers\ArrayHelper;
 use Core\Helpers\NumberHelper;
@@ -90,5 +91,85 @@ class CachedVocabularyRepository implements CachedVocabularyRepositoryInterface
         }
 
         return $result;
+    }
+
+    public function getByTopicId($topicId): GetListVocabulariesResult
+    {
+        $result = new GetListVocabulariesResult();
+        if (NumberHelper::isPositiveInteger($topicId) === false) {
+            $result->message = sprintf(ErrorMessage::INVALID_PARAMETER, 'topicId');
+            return $result;
+        }
+
+        $keyCache = $this->getByGroupIdKeyCache($topicId);
+        $listIds = CustomCache::get($keyCache);
+        if (ArrayHelper::isHasItems($listIds) === false) {
+            $getDataResult = Vocabulary::getRepo()->getByTopicId($topicId);
+            if (false === $getDataResult->success) {
+                return $getDataResult;
+            }
+
+            $listIds = array_map(
+                function ($item) {
+                    return $item->id;
+                },
+                $getDataResult->data,
+            );
+            CustomCache::set($keyCache, $listIds);
+            CustomCache::setMultiple($this->convertListToCacheInput($getDataResult->data));
+
+            return $getDataResult;
+        }
+
+        $listItemKeyCaches = array_map(
+            function ($id) {
+                return $this->getIdKeyCache($id);
+            },
+            $listIds,
+        );
+        $data = CustomCache::getMultipleKeepKeys($listItemKeyCaches);
+        foreach ($data as $keyCache => $item) {
+            if (null !== $item) {
+                $newItem = Vocabulary::getMapper()->mapFromCacheToEntity($item);
+            } else {
+                $id = $this->retrieveIdFromKeyCache($keyCache);
+                $newItem = $this->get($id)->data;
+            }
+
+            if (null !== $newItem) {
+                $result->data[] = $newItem;
+            }
+        }
+
+        $result->success = ArrayHelper::isHasItems($result->data);
+        if ($result->success) {
+            $result->message = sprintf(SuccessMessage::FOUND_LIST_ITEMS, VocabularyConstants::NAME);
+        } else {
+            $result->message = sprintf(ErrorMessage::NOT_FOUND_ITEM, VocabularyConstants::NAME);
+        }
+
+        return $result;
+    }
+
+    /**
+     * @param int|null $groupId Group id.
+     */
+    private function getByGroupIdKeyCache($groupId): string
+    {
+        return implode(':', [self::CACHE_GROUP, 'TOPIC', $groupId]);
+    }
+
+    private function retrieveIdFromKeyCache($keyCache)
+    {
+        if (StringHelper::isHasValue($keyCache) === false) {
+            return 0;
+        }
+
+        $arr = explode(':', $keyCache);
+        if (count($arr) !== 2) {
+            return 0;
+        }
+
+        return intval($arr[1]);
     }
 }
