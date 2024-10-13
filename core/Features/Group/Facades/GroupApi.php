@@ -59,7 +59,7 @@ class GroupApi
     }
 
     /**
-     * @param int $groupId Group id.
+     * @param int $id Id.
      */
     public static function getListTopicsById($id)
     {

@@ -18,9 +18,9 @@ class GetListTopicsByGroupIdUseCase
             return $validateResult;
         }
 
-        $getGroupIdResult = GroupApi::getById($model->id);
-        if (false === $getGroupIdResult->success) {
-            return $getGroupIdResult;
+        $getGroupResult = GroupApi::getById($model->id);
+        if (false === $getGroupResult->success) {
+            return $getGroupResult;
         }
 
         return Topic::getCachedRepo()->getByGroupId($model->id);

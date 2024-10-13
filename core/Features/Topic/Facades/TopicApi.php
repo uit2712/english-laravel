@@ -2,9 +2,11 @@
 
 namespace Core\Features\Topic\Facades;
 
+use Core\Features\Topic\UseCases\GetListVocabulariesByTopicIdUseCase;
 use Core\Features\Topic\UseCases\GetTopicByIdUseCase;
 use Core\Features\Topic\UseCases\ReadListTopicsFromCsvFileUseCase;
 use Core\Features\Topic\UseCases\ResetTableTopicUseCase;
+use Core\Features\Topic\ViewModels\GetListVocabulariesByTopicIdViewModel;
 use Core\Features\Topic\ViewModels\GetTopicByIdViewModel;
 
 class TopicApi
@@ -12,17 +14,22 @@ class TopicApi
     /**
      * @var GetTopicByIdUseCase|null
      */
-    public static $getTopicByIdUseCase;
+    private static $getTopicByIdUseCase;
 
     /**
      * @var ResetTableTopicUseCase|null
      */
-    public static $resetTableTopicUseCase;
+    private static $resetTableTopicUseCase;
 
     /**
      * @var ReadListTopicsFromCsvFileUseCase|null
      */
-    public static $readListTopicsFromCsvFileUseCase;
+    private static $readListTopicsFromCsvFileUseCase;
+
+    /**
+     * @var GetListVocabulariesByTopicIdUseCase|null
+     */
+    private static $getListVocabulariesByTopicIdUseCase;
 
     public static function getById($id)
     {
@@ -51,5 +58,19 @@ class TopicApi
         }
 
         return self::$readListTopicsFromCsvFileUseCase->invoke();
+    }
+
+    /**
+     * @param int $id Id.
+     */
+    public static function getListVocabulariesById($id)
+    {
+        $model = new GetListVocabulariesByTopicIdViewModel($id);
+
+        if (null === self::$getListVocabulariesByTopicIdUseCase) {
+            self::$getListVocabulariesByTopicIdUseCase = new GetListVocabulariesByTopicIdUseCase();
+        }
+
+        return self::$getListVocabulariesByTopicIdUseCase->invoke($model);
     }
 }
