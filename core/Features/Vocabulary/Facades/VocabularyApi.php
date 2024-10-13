@@ -4,6 +4,7 @@ namespace Core\Features\Vocabulary\Facades;
 
 use Core\Features\Vocabulary\UseCases\CheckTableVocabularyExistUseCase;
 use Core\Features\Vocabulary\UseCases\GetVocabularyByIdUseCase;
+use Core\Features\Vocabulary\UseCases\ReadListVocabulariesFromCsvFileUseCase;
 
 class VocabularyApi
 {
@@ -16,6 +17,11 @@ class VocabularyApi
      * @var GetVocabularyByIdUseCase|null
      */
     private static $getVocabularyByIdUseCase;
+
+    /**
+     * @var ReadListVocabulariesFromCsvFileUseCase|null
+     */
+    private static $readListVocabulariesFromCsvFileUseCase;
 
     public static function isTableExisted()
     {
@@ -36,5 +42,14 @@ class VocabularyApi
         }
 
         return self::$getVocabularyByIdUseCase->invoke($id);
+    }
+
+    public static function readFromCsvFile()
+    {
+        if (null == self::$readListVocabulariesFromCsvFileUseCase) {
+            self::$readListVocabulariesFromCsvFileUseCase = new ReadListVocabulariesFromCsvFileUseCase();
+        }
+
+        return self::$readListVocabulariesFromCsvFileUseCase->invoke();
     }
 }
