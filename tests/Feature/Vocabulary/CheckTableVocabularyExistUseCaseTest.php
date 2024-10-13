@@ -15,6 +15,6 @@ class CheckTableVocabularyExistUseCaseTest extends TestCase
         $expectedResult = true;
         $actualResult = VocabularyApi::isTableExisted();
 
-        $this->assertEquals($expectedResult, $actualResult, '1234');
+        $this->assertEquals($expectedResult, $actualResult);
     }
 }
