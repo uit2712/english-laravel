@@ -99,6 +99,8 @@ class VocabularyMapper implements VocabularyMapperInterface
         if (StringHelper::isHasValue($data->image)) {
             $result->image = $data->image;
         }
+
+        return $result;
     }
 
     public function mapFromCacheToListEntities($data)

@@ -7,8 +7,10 @@ use Core\Constants\SuccessMessage;
 use Core\Features\Group\Facades\GroupApi;
 use Core\Features\Topic\Facades\TopicApi;
 use Core\Features\Vocabulary\Constants\VocabularyConstants;
+use Core\Features\Vocabulary\Facades\VocabularyApi;
 use Database\Seeders\GroupSeeder;
 use Database\Seeders\TopicSeeder;
+use Database\Seeders\VocabularySeeder;
 use Illuminate\Foundation\Testing\DatabaseTruncation;
 use Illuminate\Testing\Fluent\AssertableJson;
 use Tests\TestCase;
@@ -40,6 +42,7 @@ class GetVocabularyByIdUseCaseTest extends TestCase
     {
         $this->seed(GroupSeeder::class);
         $this->seed(TopicSeeder::class);
+        $this->seed(VocabularySeeder::class);
 
         $response = $this->get('/vocabularies/1');
 
@@ -49,6 +52,7 @@ class GetVocabularyByIdUseCaseTest extends TestCase
                 'message' => sprintf(SuccessMessage::FOUND_ITEM, VocabularyConstants::NAME),
             ]);
 
+        VocabularyApi::resetTable();
         TopicApi::resetTable();
         GroupApi::resetTable();
     }
@@ -57,6 +61,7 @@ class GetVocabularyByIdUseCaseTest extends TestCase
     {
         $this->seed(GroupSeeder::class);
         $this->seed(TopicSeeder::class);
+        $this->seed(VocabularySeeder::class);
 
         $response = $this->get('/vocabularies/1');
 
@@ -84,6 +89,7 @@ class GetVocabularyByIdUseCaseTest extends TestCase
             ])
             ->etc());
 
+        VocabularyApi::resetTable();
         TopicApi::resetTable();
         GroupApi::resetTable();
     }
@@ -92,6 +98,7 @@ class GetVocabularyByIdUseCaseTest extends TestCase
     {
         $this->seed(GroupSeeder::class);
         $this->seed(TopicSeeder::class);
+        $this->seed(VocabularySeeder::class);
 
         $response = $this->get('/vocabularies/1');
 
@@ -107,6 +114,7 @@ class GetVocabularyByIdUseCaseTest extends TestCase
         $response->assertJsonPath('data.image', '');
         $response->assertJsonPath('data.topicId', 1);
 
+        VocabularyApi::resetTable();
         TopicApi::resetTable();
         GroupApi::resetTable();
     }

@@ -3,14 +3,20 @@
 namespace Core\Features\Vocabulary\UseCases;
 
 use Core\Features\Vocabulary\Facades\Vocabulary;
+use Core\Features\Vocabulary\ViewModels\GetVocabularyByIdViewModel;
 
 class GetVocabularyByIdUseCase
 {
     /**
-     * @param string|null $id Id.
+     * @param GetVocabularyByIdViewModel $model Model.
      */
-    public function invoke($id)
+    public function invoke($model)
     {
-        return Vocabulary::getCachedRepo()->get($id);
+        $validateResult = $model->validate();
+        if (false === $validateResult->success) {
+            return $validateResult;
+        }
+
+        return Vocabulary::getCachedRepo()->get($model->id);
     }
 }

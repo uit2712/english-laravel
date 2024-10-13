@@ -11,6 +11,7 @@ use Core\Features\Vocabulary\Facades\Vocabulary;
 use Core\Features\Vocabulary\InterfaceAdapters\VocabularyRepositoryInterface;
 use Core\Features\Vocabulary\Models\GetVocabularyResult;
 use Core\Helpers\NumberHelper;
+use Core\Models\Result;
 
 class VocabularyRepository implements VocabularyRepositoryInterface
 {
@@ -46,6 +47,14 @@ class VocabularyRepository implements VocabularyRepositoryInterface
             $result->responseCode = HttpResponseCode::NOT_FOUND;
             $result->data = $data;
         }
+
+        return $result;
+    }
+
+    public function reset(): Result
+    {
+        $result = new Result();
+        Database::truncate($this->tableName);
 
         return $result;
     }

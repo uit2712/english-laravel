@@ -32,6 +32,7 @@ class CachedVocabularyRepository implements CachedVocabularyRepositoryInterface
             $result->success = true;
             $result->message = sprintf(SuccessMessage::FOUND_ITEM, VocabularyConstants::NAME);
             $result->data = Vocabulary::getMapper()->mapFromCacheToEntity($data);
+            // $result->data = $data;
             $result->isFromCache = true;
             return $result;
         }

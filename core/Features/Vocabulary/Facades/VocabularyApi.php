@@ -5,6 +5,8 @@ namespace Core\Features\Vocabulary\Facades;
 use Core\Features\Vocabulary\UseCases\CheckTableVocabularyExistUseCase;
 use Core\Features\Vocabulary\UseCases\GetVocabularyByIdUseCase;
 use Core\Features\Vocabulary\UseCases\ReadListVocabulariesFromCsvFileUseCase;
+use Core\Features\Vocabulary\UseCases\ResetTableVocabularyUseCase;
+use Core\Features\Vocabulary\ViewModels\GetVocabularyByIdViewModel;
 
 class VocabularyApi
 {
@@ -23,6 +25,11 @@ class VocabularyApi
      */
     private static $readListVocabulariesFromCsvFileUseCase;
 
+    /**
+     * @var ResetTableVocabularyUseCase|null
+     */
+    private static $resetTableVocabularyUseCase;
+
     public static function isTableExisted()
     {
         if (null == self::$checkTableVocabularyExistUseCase) {
@@ -37,11 +44,13 @@ class VocabularyApi
      */
     public static function getById($id)
     {
+        $model = new GetVocabularyByIdViewModel($id);
+
         if (null == self::$getVocabularyByIdUseCase) {
             self::$getVocabularyByIdUseCase = new GetVocabularyByIdUseCase();
         }
 
-        return self::$getVocabularyByIdUseCase->invoke($id);
+        return self::$getVocabularyByIdUseCase->invoke($model);
     }
 
     public static function readFromCsvFile()
@@ -51,5 +60,14 @@ class VocabularyApi
         }
 
         return self::$readListVocabulariesFromCsvFileUseCase->invoke();
+    }
+
+    public static function resetTable()
+    {
+        if (null == self::$resetTableVocabularyUseCase) {
+            self::$resetTableVocabularyUseCase = new ResetTableVocabularyUseCase();
+        }
+
+        return self::$resetTableVocabularyUseCase->invoke();
     }
 }
