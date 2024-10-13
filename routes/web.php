@@ -20,6 +20,7 @@ Route::get('/groups/readFromCsvFile', [GroupController::class, 'readFromCsvFile'
 
 Route::get('/topics/{id}', [TopicController::class, 'getById'])->where('id', '[0-9]+');
 Route::get('/topics/readFromCsvFile', [TopicController::class, 'readFromCsvFile']);
+Route::get('/topics/{id}/vocabularies', [TopicController::class, 'getListVocabulariesById'])->where('id', '[0-9]+');
 
 Route::get('/vocabularies/{id}', [VocabularyController::class, 'getById'])->where('id', '[0-9]+');
 Route::get('/vocabularies/readFromCsvFile', [VocabularyController::class, 'readFromCsvFile']);

@@ -262,6 +262,45 @@
                 }
             }
         },
+        "/topics/{id}/vocabularies": {
+            "get": {
+                "tags": [
+                    "Topics"
+                ],
+                "summary": "Get list vocabularies by id",
+                "operationId": "ee5a5503e612d412ecd96730faa0cb0e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get list vocabularies by id",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResult"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found any topic or vocabulary(s)",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResult"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/vocabularies/{id}": {
             "get": {
                 "tags": [
