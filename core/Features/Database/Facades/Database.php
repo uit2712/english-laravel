@@ -69,4 +69,16 @@ class Database
             return null;
         }
     }
+
+    /**
+     * @param string $tableName Table name.
+     */
+    public static function isTableExisted($tableName): bool
+    {
+        try {
+            return self::getRepo()->isTableExisted($tableName);
+        } catch (Exception $ex) {
+            return false;
+        }
+    }
 }

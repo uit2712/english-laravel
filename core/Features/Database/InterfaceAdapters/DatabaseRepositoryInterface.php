@@ -23,4 +23,9 @@ interface DatabaseRepositoryInterface
      * @param string $tableName Table name.
      */
     public function truncate($tableName): mixed;
+
+    /**
+     * @param string $tableName Table name.
+     */
+    public function isTableExisted($tableName): bool;
 }

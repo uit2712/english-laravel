@@ -5,6 +5,7 @@ namespace Framework\Features\Database\Repositories;
 use Core\Features\Database\InterfaceAdapters\DatabaseRepositoryInterface;
 use Core\Helpers\StringHelper;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 class DatabaseRepository implements DatabaseRepositoryInterface
 {
@@ -42,5 +43,14 @@ class DatabaseRepository implements DatabaseRepositoryInterface
         }
 
         return DB::table($tableName)->truncate();
+    }
+
+    public function isTableExisted($tableName): bool
+    {
+        if (StringHelper::isHasValue($tableName) === false) {
+            return false;
+        }
+
+        return Schema::hasTable($tableName);
     }
 }
