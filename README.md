@@ -1,6 +1,8 @@
 # Install
 ## Install docker
 ## Pull code
+## Create file .env
+Copy content of file __.env.example__
 ## Run web by command below
 ```sh
 cd ./docker && up.sh
