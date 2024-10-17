@@ -2,6 +2,7 @@
 ## Install docker
 https://docs.docker.com/engine/install/
 ## Install composer
+https://getcomposer.org/download/
 ## Pull code
 ```bash
 git clone https://github.com/uit2712/english-laravel
