@@ -11,3 +11,7 @@ cd ./docker && up.sh
 composer migrate:seed
 ```
 # Browse url http://localhost:8000/api/documentation to show all available api
+# Run tests
+```bash
+composer test
+```
