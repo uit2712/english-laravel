@@ -9,6 +9,10 @@ git clone https://github.com/uit2712/english-laravel
 ```
 ## Create file .env
 Copy content of file __.env.example__
+## Install project libraries
+```bash
+composer install
+```
 ## Run web by command below
 ```sh
 cd ./docker && up.sh
